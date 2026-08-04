@@ -4,30 +4,44 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./public/styles/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="dist/mainGame.js" type="module" async></script>
     <title>The Queen's Poker Dice</title>
 </head>
 <body>
-    
-    <aside>
-        <div class="sidenav">
-            <button class="navItem">
-                Example 1
+
+    <input type="checkbox" id="sidebar-toggle" class="sidebar-toggle-checkbox">
+    <label for="sidebar-toggle" class="sidebar-toggle-label" aria-label="Toggle sidebar">
+        <span></span>
+        <span></span>
+        <span></span>
+    </label>
+
+    <div class="layout">
+        <nav class="sidebar">
+            <p class="sidebar-title">El Juego de la Reina</p>
+            <button type="button" class="sidebar-btn" id="how-to-play-btn">
+                <i class="fa fa-diamond"></i>
+                Como jugar
             </button>
-            <button class="navItem">
-                Example 2
+            <button type="button" class="sidebar-btn" id="round-info">
+                <i class="fa fa-heart"></i>
+                Información de la partida
             </button>
-            <button class="navItem">
+            <button type="button" class="sidebar-btn">
                 Example 3
             </button>
-        </div>
-    </aside>
+        </nav>
 
-    <main>
-        <h1>Juego</h1>
-        <img id = playerDice src="#" alt="" width="30pxs">
-        <img id = cpuDice src="#" alt="" width="30pxs">
-    </main>
+        <label for="sidebar-toggle" class="sidebar-overlay"></label>
+    
+        <main class="main-content">
+            <h1>Juego</h1>
+            <img id = playerDice src="#" alt="" width="30pxs">
+            <img id = cpuDice src="#" alt="" width="30pxs">
+        </main>
+    </div>
+    
     
 </body>
 </html>
