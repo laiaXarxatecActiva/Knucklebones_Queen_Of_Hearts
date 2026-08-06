@@ -2,10 +2,10 @@
 :root {
   --sidebar-width: 295px;
   --sidebar-bg: #6a0f32;
-  --sidebar-text: #e5e7eb;
+  --sidebar-text: #b7bfd1;
   --sidebar-btn-hover: #550b0b;
   --main-bg: #1e222b;
-  --main-text: #111827;
+  --main-text: #d8dde6;
   --accent: #f63b60;
   --toggle-size: 44px;
 }
@@ -54,7 +54,7 @@ body {
   text-align: left;
   padding: 0.65rem 0.75rem;
   border: none;
-  border-radius: 6px;
+  border-radius: 0.5rem;
   background: transparent;
   color: var(--sidebar-text);
   font-size: 0.95rem;
@@ -74,19 +74,6 @@ body {
 }
 
 /* ============= Main ============= */
-/*.main-content {
-  flex: 1;
-  padding: 5rem;
-  justify-content: center;
-}
-
-.main-content-game {
-  display: grid;
-  grid-template-columns: auto;
-  grid-template-rows: auto auto;
-  justify-content: space-between;
-  align-items: center;
-}*/
 
 .main-content {
   flex: 1;    
@@ -101,16 +88,17 @@ body {
   justify-content: space-between;
 }
 
-/*.game-environment {
-  display: grid;
-  grid-template-columns: 15% 50% 15%;
+.middle {
+  display: flex;
   justify-content: center;
-  margin-bottom: 50px;
-}*/
+  font-weight: bold;
+  letter-spacing: 0.3rem;
+}
 
 .game-environment {
     display: grid;
     grid-template-columns: auto auto auto;
+    grid-template-rows: auto auto;
     justify-content: center;
     column-gap: 2rem;
 }
@@ -135,12 +123,20 @@ body {
 
 .row{
   height: 7rem;
-  background-color: #443e71;
+  background-color: #5c5879;
 }
 
 .points {
+  display: grid;
+  grid-template-columns: auto auto auto;
   border-radius: 0.5rem;
-  background-color: #303345;
+  background-color: #40476d;
+  font-size: 1.4rem;
+}
+
+.column-points {
+  display: flex;
+  justify-content: center;
   padding: 1rem;
 }
 
@@ -156,10 +152,8 @@ body {
   height: 7rem;
   width: 7rem;
   border-radius: 1rem;
-  background-color: #4d374d;
+  background-color: #edbebb;
 }
-
-
 
 #player .rand-item {
   grid-column: 1;
@@ -195,7 +189,6 @@ body {
   grid-column: 1;
   grid-row: 2;  
 }
-
 
 
 /* ============= Toggle control ============= */
