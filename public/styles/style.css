@@ -1,12 +1,12 @@
 /* ============= Variables ============= */
 :root {
   --sidebar-width: 295px;
-  --sidebar-bg: #371e37;
+  --sidebar-bg: #6a0f32;
   --sidebar-text: #e5e7eb;
-  --sidebar-btn-hover: #210011;
-  --main-bg: #f9fafb;
+  --sidebar-btn-hover: #550b0b;
+  --main-bg: #1e222b;
   --main-text: #111827;
-  --accent: #3b82f6;
+  --accent: #f63b60;
   --toggle-size: 44px;
 }
 
@@ -74,31 +74,50 @@ body {
 }
 
 /* ============= Main ============= */
-.main-content {
-  background-color: #111827;
+/*.main-content {
   flex: 1;
   padding: 5rem;
   justify-content: center;
-
 }
 
 .main-content-game {
-  min-height: 100%;
+  display: grid;
+  grid-template-columns: auto;
+  grid-template-rows: auto auto;
   justify-content: space-between;
   align-items: center;
+}*/
+
+.main-content {
+  flex: 1;    
+  display: flex;
+  padding: 4rem;
 }
 
-.game-environment {
+.main-content-game {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+/*.game-environment {
   display: grid;
   grid-template-columns: 15% 50% 15%;
   justify-content: center;
   margin-bottom: 50px;
+}*/
+
+.game-environment {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    justify-content: center;
+    column-gap: 2rem;
 }
 
 .game-board {
   display: grid;
   grid-template-rows: auto auto;
-  justify-content: space-evenly;
 }
 
 .columns {
@@ -135,13 +154,12 @@ body {
 
 .rand-item, .score{
   height: 7rem;
+  width: 7rem;
   border-radius: 1rem;
   background-color: #4d374d;
 }
 
-#player {
-  align-self: end;
-}
+
 
 #player .rand-item {
   grid-column: 1;
@@ -160,7 +178,6 @@ body {
 
 #player {
   display: grid;
-  grid-template-columns: 15% 50% 15%;
   grid-template-rows: auto auto;
 }
 
