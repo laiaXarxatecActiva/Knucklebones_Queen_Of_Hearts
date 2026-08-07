@@ -4,7 +4,7 @@
 
 ## Historia
 
-Tras una bizarra secuencia de acontecimientos, el jugador acaba atrapado en el reino de la Reina de Naipes. Y en este reino, la ley dicta que todo aquel que entra en los dominios de la Reina debe enfrentarse a ella en su pasatiempo favorito: **el Juego de la Reina**. Un juego que irónicamente no tiene tanto que ver con las cartas. 
+Tras una bizarra secuencia de acontecimientos, el jugador acaba atrapado en el reino de la Reina de Naipes. Y en este reino, la ley dicta que todo aquel que entra en los dominios de la Reina debe enfrentarse a ella en su pasatiempo favorito: **el Juego de la Reina**. Un juego que, irónicamente, no tiene tanto que ver con las cartas. 
 
 Las reglas son simples. Si el jugador consigue derrotarla, recuperará su libertad y podrá abandonar el reino. Sin embargo, la derrota tiene un alto precio, pues quienes pierden son enviados a las mazmorras del castillo, donde esperan un destino incierto bajo el capricho de la reina.
 

@@ -1,11 +1,11 @@
 /* ============= Variables ============= */
 :root {
   --sidebar-width: 295px;
-  --sidebar-bg: #6a0f32;
-  --sidebar-text: #b7bfd1;
+  --sidebar-bg: #690820;
+  --sidebar-text: #d5ddf1;
   --sidebar-btn-hover: #550b0b;
   --main-bg: #1e222b;
-  --main-text: #d8dde6;
+  --main-text: #d5ddf1;
   --accent: #f63b60;
   --toggle-size: 44px;
 }
@@ -116,28 +116,33 @@ body {
 }
 
 .column {
-  width: 7rem;
+  width: 6rem;
   display: grid;
   grid-template-rows: auto auto auto;
 }
 
 .row{
-  height: 7rem;
-  background-color: #5c5879;
+  height: 6rem;
+  background-color: #a280b1;
+  text-align: center;
+  align-content: center;
 }
 
 .points {
   display: grid;
   grid-template-columns: auto auto auto;
   border-radius: 0.5rem;
-  background-color: #40476d;
-  font-size: 1.4rem;
+  border: 0.2rem double var(--accent);
+  background-color: #690820;
+  font-family:'Courier New', Courier, monospace;
+  font-size: 1rem;
+  font-weight: bold;
 }
 
 .column-points {
   display: flex;
   justify-content: center;
-  padding: 1rem;
+  padding: 0.2rem;
 }
 
 #player .points {
@@ -148,11 +153,29 @@ body {
   margin-top: 1rem;
 }
 
-.rand-item, .score{
-  height: 7rem;
-  width: 7rem;
+.rand-item, .score {
+  height: 6rem;
+  width: 6rem;
   border-radius: 1rem;
-  background-color: #edbebb;
+  align-content: center;
+  text-align: center;
+  border: 0.2rem double;
+}
+
+.rand-item {
+  border-color: #000000;
+  background-color: #f3eded;
+}
+
+.score {
+  border-color: #f3eded;
+  font-family:'Courier New', Courier, monospace;
+  letter-spacing: 0.1rem;
+  font-weight: bold;
+}
+
+.score p{
+  margin-bottom: 0.6rem;
 }
 
 #player .rand-item {
@@ -190,6 +213,18 @@ body {
   grid-row: 2;  
 }
 
+.name {
+  text-transform: uppercase;
+  padding: 1rem;
+  word-spacing: 0.4rem;
+  letter-spacing: 0.2rem;
+  text-align: center;
+}
+
+.dice {
+  height: 2.5rem;
+  width: auto;
+}
 
 /* ============= Toggle control ============= */
 .sidebar-toggle-checkbox {
@@ -205,6 +240,7 @@ body {
   height: var(--toggle-size);
   background: var(--sidebar-bg);
   border-radius: 6px;
+  border: 0.2rem double var(--accent);
   z-index: 1100;
   cursor: pointer;
   flex-direction: column;
