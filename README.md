@@ -22,7 +22,7 @@ Solo hay una forma de escapar: vencer en su propio juego.
 | ♥ Corazón  | 2     |
 | ♣ Trébol   | 3     |
 | ♠ Pica     | 4     |
-| 👑 Rey     | 5     |
+| 🤡 Bufón   | 5     |
 | 👸 Reina   | 6     |
 
 A continuación se detallan las reglas del juego.
@@ -60,7 +60,7 @@ La siguiente tabla muestra la puntuación resultante según el número de símbo
 | ♥ Corazón (2)  | 2         | 8          | 18         |
 | ♣ Trébol (3)   | 3         | 12         | 27         |
 | ♠ Pica (4)     | 4         | 16         | 36         |
-| 👑 Rey (5)     | 5         | 20         | 45         |
+| 🤡 Bufón (5)   | 5         | 20         | 45         |
 | 👸 Reina (6)   | 6         | 24         | 54         |
 
 > En otras palabras, la puntuación de una combinación es el valor del símbolo multiplicado por el número de repeticiones, aplicado a cada símbolo de esa combinación.
