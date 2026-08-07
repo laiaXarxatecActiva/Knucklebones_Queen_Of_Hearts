@@ -135,7 +135,7 @@ body {
   border: 0.2rem double var(--accent);
   background-color: #690820;
   font-family:'Courier New', Courier, monospace;
-  font-size: 1rem;
+  letter-spacing: 0.1rem;
   font-weight: bold;
 }
 
@@ -222,7 +222,7 @@ body {
 }
 
 .dice {
-  height: 2.5rem;
+  height: 3.5rem;
   width: auto;
 }
 
