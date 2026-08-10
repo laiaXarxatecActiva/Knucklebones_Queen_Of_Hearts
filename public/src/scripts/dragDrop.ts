@@ -1,3 +1,5 @@
+import { endTurn } from "./turnSystem.js"
+
 export function makeDraggable(item: HTMLElement): void {
     item.setAttribute("draggable", "true");
 
@@ -34,6 +36,7 @@ export function makeDropZone(zone: HTMLElement): void {
         if (zone.children.length > 0) return;
 
         zone.appendChild(draggedEl);
+        endTurn();
     });
 }
 
