@@ -1,7 +1,3 @@
-let stylesInjected = false;
-
-
-
 function openPopup(contentHtml: string): void {
     const overlay = document.createElement('div');
     overlay.className = 'popup-overlay';
