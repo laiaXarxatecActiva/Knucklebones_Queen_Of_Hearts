@@ -10,6 +10,8 @@ export function makeDraggable(item: HTMLElement): void {
 
     item.addEventListener("dragend", () => {
         item.classList.remove("dragging");
+        //test
+        item.setAttribute("draggable", "false");
     });
 }
 

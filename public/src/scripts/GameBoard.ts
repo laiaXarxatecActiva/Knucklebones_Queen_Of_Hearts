@@ -1,3 +1,5 @@
+import { generateDice } from "./diceController.js";
+
 export class GameBoard {
     container: HTMLElement;
     prefix: string;
@@ -17,14 +19,15 @@ export class GameBoard {
         const randSymbol = document.createElement("div");
         randSymbol.className = "rand-item";
         randSymbol.id = `${this.prefix}-rand-item`;
-
-        const img = document.createElement("img");
+        //generateDice(this.prefix);
+        //console.log(randSymbol)
+       /* const img = document.createElement("img");
         img.className = "dice";
         img.id = `${this.prefix}-dice`;
         img.alt = "";
         img.draggable = true;
 
-        randSymbol.appendChild(img);
+        randSymbol.appendChild(img);*/
 
         /**
          * ======== GAME BOARD ========
