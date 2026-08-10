@@ -1,3 +1,4 @@
+import { initDragAndDrop } from "./dragDrop.js";
 import { GameBoard } from "./GameBoard.js"
 
 // CREATING THE BOARDS 
@@ -60,6 +61,14 @@ const JOKER = {
 };
 
 const cardSymbolList = [PIKE, CLUB, HEART, DIAMOND, JOKER, QUEEN];
+
+// ..... TEST dragDrop .....
+
+const diceItems = Array.from(document.querySelectorAll<HTMLElement>(".dice"));
+
+const cells = Array.from(document.querySelectorAll<HTMLElement>(".cell"));
+
+initDragAndDrop(diceItems, cells);
 
 // FUNCTION RAND
 
