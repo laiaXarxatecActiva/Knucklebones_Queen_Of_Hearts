@@ -1,6 +1,6 @@
 import { initDragAndDrop } from "./dragDrop.js";
 import { GameBoard } from "./GameBoard.js"
-import { explanationGame } from "./popUps.js";
+import { showExplanation, showRoundInfo } from "./popUp.js";
 
 // CREATING THE BOARDS 
 const opponentContainer = document.getElementById("opponent");
@@ -89,4 +89,5 @@ function rollDice(dice:HTMLImageElement): void {
 rollDice(playerDiceImage);
 rollDice(cpuDiceImage);
 
-explanationGame();
+
+document.getElementById('how-to-play-btn')?.addEventListener('click', showExplanation);
