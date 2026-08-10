@@ -11,7 +11,7 @@ export function makeDraggable(item: HTMLElement): void {
     item.addEventListener("dragend", () => {
         item.classList.remove("dragging");
         //test
-        item.setAttribute("draggable", "false");
+        //item.setAttribute("draggable", "false");
     });
 }
 
@@ -38,6 +38,7 @@ export function makeDropZone(zone: HTMLElement): void {
         if (zone.children.length > 0) return;
 
         zone.appendChild(draggedEl);
+        draggedEl.setAttribute("draggable", "false");
         endTurn();
     });
 }
