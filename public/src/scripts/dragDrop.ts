@@ -38,7 +38,9 @@ export function makeDropZone(zone: HTMLElement): void {
         if (zone.children.length > 0) return;
 
         zone.appendChild(draggedEl);
+
         draggedEl.setAttribute("draggable", "false");
+        
         endTurn();
     });
 }
