@@ -22,6 +22,7 @@ export class GameBoard {
         img.className = "dice";
         img.id = `${this.prefix}-dice`;
         img.alt = "";
+        img.draggable = true;
 
         randSymbol.appendChild(img);
 
