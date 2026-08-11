@@ -7,6 +7,7 @@ import { initTurn } from "./turnSystem.js";
 const opponentContainer = document.getElementById("opponent");
 const playerContainer = document.getElementById("player");
 
+// the opponent boards are initialized earlier
 let opponentBoard: GameBoard | undefined;
 let playerBoard: GameBoard | undefined;
 
@@ -34,10 +35,13 @@ initTurn();
 
 // ..... Drag&Drop .....
 
+//Because the items are controlled in drag&drop for socre, it no longer is needed in this
 //const diceItems = Array.from(document.querySelectorAll(".dice")) as HTMLElement[];
+
 const cells = Array.from(document.querySelectorAll(".cell")) as HTMLElement[];
 
 if (playerBoard && opponentBoard) {
+    //And now it needs the player and opponentBoard
     initDragAndDrop(cells, playerBoard, opponentBoard);
 }
 

@@ -11,15 +11,17 @@ export class GameBoard {
         this.container = container;
         this.prefix = prefix;
         this.playerName = playerName;
-        //Functionality to control board so SystemScores can work
+        //This is meant to controll the columns and the cells of the board, initially empty
         this.board = [
             [null, null, null],
             [null, null, null],
             [null, null, null]
         ];
+        //This will be used to control the score. 
         this.scoreSystem = new ScoreSystem();
     }
 
+    // Create the Board
     create(): void {
         /**
          * ======== RAND SYMBOL ========
@@ -123,43 +125,36 @@ export class GameBoard {
         }
     }
 
+    // Control Symbols on the board and how this affects Scores
     addSymbol(columnIndex: number, value: number): void {
         const column = this.board[columnIndex];
-
-        if (!column) {return;}
+        if (!column) return;
 
         const emptyCell = column.findIndex(cell => cell === null);
-
-        if (emptyCell === -1) {return;}
+        if (emptyCell === -1) return;
 
         column[emptyCell] = value;
 
         this.updateScoreDisplay();
     }
 
+    // Ensures the Scores displayed is the correct one acording to 
+    // the symbols on the board
     updateScoreDisplay(): void {
+        // This is the score of a column acording to the symbols
         const columnScores = this.scoreSystem.calculateAllColumnScores(this.board);
-
+        // This is the  total score of all the board
         const totalScore = this.scoreSystem.calculateTotalScore(this.board);
-
+        
+        // This reviews the score of the columns and ensures to update it.
         columnScores.forEach((score, index) => {
-            const pointColumn = document.getElementById(
-                `${this.prefix}-column-points-${index + 1}`
-            );
-
+            const pointColumn = document.getElementById(`${this.prefix}-column-points-${index + 1}`);
             const scoreElement = pointColumn?.querySelector("p");
-
-            if (scoreElement) {
-                scoreElement.textContent = score.toString();
-            }
+            if (scoreElement) scoreElement.textContent = score.toString();
         });
 
-        const totalElement = document.querySelector(
-            `#${this.prefix}-score span`
-        );
-
-        if (totalElement) {
-            totalElement.textContent = totalScore.toString();
-        }
+        // This controls the total score
+        const totalElement = document.querySelector(`#${this.prefix}-score span`);
+        if (totalElement) totalElement.textContent = totalScore.toString();
     }
 }

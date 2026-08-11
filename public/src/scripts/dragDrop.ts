@@ -1,4 +1,6 @@
 import { endTurn } from "./turnSystem.js";
+// To implement the functionality of the socre, it would be needed
+// dice controller and Gameboard
 import { currentPlayableDice } from "./diceController.js";
 import { GameBoard } from "./GameBoard.js";
 
@@ -30,23 +32,19 @@ export function makeDropZone(zone: HTMLElement, gameBoard: GameBoard): void {
         zone.classList.remove("drag-over");
 
         const draggedId = e.dataTransfer?.getData("text/plain");
-
         if (!draggedId) return;
 
         const draggedEl = document.getElementById(draggedId);
-
         if (!draggedEl) return;
 
         if (zone.children.length > 0) return;
 
+        //This makes use of the addSymbol function to control the score
+        // the moment the symbol is droped inside the board
         const columnElement = zone.parentElement;
-
         if (!columnElement) return;
-
         const columnId = columnElement.id;
-
         const columnIndex = Number(columnId.split("-").pop()) - 1;
-
         gameBoard.addSymbol(columnIndex, currentPlayableDice.value);
 
         zone.appendChild(draggedEl);
@@ -56,6 +54,9 @@ export function makeDropZone(zone: HTMLElement, gameBoard: GameBoard): void {
         endTurn();
     });
 }
+
+// because it is controlled earlier, this causes that
+// the item no longer needs to be passed 
 
 export function initDragAndDrop(dropZones: HTMLElement[], playerBoard: GameBoard, opponentBoard: GameBoard): void {
     dropZones.forEach(zone => {
