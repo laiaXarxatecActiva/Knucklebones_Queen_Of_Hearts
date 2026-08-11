@@ -14,38 +14,37 @@ const playerDiceImage = document.getElementById("player-dice") as HTMLImageEleme
 const cpuDiceImage = document.getElementById("opponent-dice") as HTMLImageElement;*/
 
 // CREATING CARD SYMBOLS
-
-const PIKE = {
-    value:0,
-    src: "public/src/imgs/pike.png"
+const DIAMOND = {
+    value:1,
+    src: "public/src/imgs/diamond.png"
 };
 
 const CLUB = {
-    value:0,
+    value:2,
     src: "public/src/imgs/club.png"
 };
 
 const HEART = {
-    value:0,
+    value:3,
     src: "public/src/imgs/heart.png"
 };
 
-const DIAMOND = {
-    value:0,
-    src: "public/src/imgs/diamond.png"
-};
-
-const QUEEN = {
-    value: 0,
-    src: "public/src/imgs/queen_crown.png"
+const PIKE = {
+    value:4,
+    src: "public/src/imgs/pike.png"
 };
 
 const JOKER = {
-    value: 0,
+    value: 5,
     src: "public/src/imgs/joker.png"
 };
 
-const cardSymbolList = [PIKE, CLUB, HEART, DIAMOND, JOKER, QUEEN];
+const QUEEN = {
+    value: 6,
+    src: "public/src/imgs/queen_crown.png"
+};
+
+const cardSymbolList = [DIAMOND, CLUB, HEART, PIKE, JOKER, QUEEN];
 
 // FUNCTION RAND
 

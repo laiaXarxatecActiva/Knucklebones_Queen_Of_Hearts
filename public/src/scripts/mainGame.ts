@@ -1,14 +1,18 @@
 import { initDragAndDrop } from "./dragDrop.js";
 import { GameBoard } from "./GameBoard.js"
-import { showExplanation, showRoundInfo } from "./popUp.js";
+import { showExplanation } from "./popUp.js";
 import { initTurn } from "./turnSystem.js";
 
 // CREATING THE BOARDS 
 const opponentContainer = document.getElementById("opponent");
 const playerContainer = document.getElementById("player");
 
+// the opponent boards are initialized earlier
+let opponentBoard: GameBoard | undefined;
+let playerBoard: GameBoard | undefined;
+
 if (opponentContainer) {
-    const opponentBoard = new GameBoard(
+    opponentBoard = new GameBoard(
         opponentContainer, 
         "opponent", 
         "Reina de Naipes"
@@ -17,7 +21,7 @@ if (opponentContainer) {
 }
 
 if (playerContainer) {
-    const playerBoard = new GameBoard(
+    playerBoard = new GameBoard(
         playerContainer,
         "player",
         "Tú"
@@ -25,19 +29,20 @@ if (playerContainer) {
     playerBoard.create();
 }
 
+// Initialize Turn system
 
 initTurn();
 
+// ..... Drag&Drop .....
 
-// ..... TEST dragDrop .....
+//Because the items are controlled in drag&drop for score, it is no longer needed in this
+//const diceItems = Array.from(document.querySelectorAll(".dice")) as HTMLElement[];
 
-const diceItems = Array.from(document.querySelectorAll<HTMLElement>(".dice"));
+const cells = Array.from(document.querySelectorAll(".cell")) as HTMLElement[];
 
-const cells = Array.from(document.querySelectorAll<HTMLElement>(".cell"));
-
-initDragAndDrop(diceItems, cells);
-
-/*rollDice(playerDiceImage);
-rollDice(cpuDiceImage);*/
+if (playerBoard && opponentBoard) {
+    //And now it needs the player and opponentBoard
+    initDragAndDrop(cells, playerBoard, opponentBoard);
+}
 
 document.getElementById('how-to-play-btn')?.addEventListener('click', showExplanation);
