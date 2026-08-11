@@ -1,14 +1,25 @@
+import { ScoreSystem } from "./ScoreSystem.js";
 import { generateDice } from "./diceController.js";
 
 export class GameBoard {
     container: HTMLElement;
     prefix: string;
     playerName: string;
+    //Add functionality to control board so SystemScores can work
+    board: (number | null)[][];
+    scoreSystem: ScoreSystem;
 
     constructor(container: HTMLElement, prefix:string, playerName: string) {
         this.container = container;
         this.prefix = prefix;
         this.playerName = playerName;
+        //Functionality to control board so SystemScores can work
+        this.board = [
+            [null, null, null],
+            [null, null, null],
+            [null, null, null]
+        ];
+        this.scoreSystem = new ScoreSystem();
     }
 
     create(): void {
@@ -121,5 +132,41 @@ export class GameBoard {
             gameBoard.append(name, points, columns);
             this.container.append(randSymbol, gameBoard, score)
         }
+    }
+
+    updateScoreDysplay(): void {
+        const columnScores = this.scoreSystem.calculateAllColumnScores(this.board);
+        const totalScore = this.scoreSystem.calculateTotalScore(this.board);
+
+        columnScores.forEach((score, i) => {
+            const pointColumn = document.getElementById(
+                `${this.prefix}-column-points-${i+1}`
+            );
+            const scoreElement = pointColumn?.querySelector("p");
+
+            if (scoreElement) {
+                scoreElement.textContent = score.toString();
+            }
+        });
+
+        const totalElement = document.querySelector(`#${this.prefix}-score span`);
+    
+        if (totalElement) {
+            totalElement.textContent = totalScore.toString();
+        }
+    }
+
+    addSymbol(columnIndex: number, value: number): void {
+        const column = this.board[columnIndex];
+
+        if (!column) return;
+
+        const emptyCell = column.findIndex(cell => cell === null);
+
+        if (emptyCell === -1) return;
+        
+        column[emptyCell] = value;
+
+        this.updateScoreDysplay();
     }
 }
