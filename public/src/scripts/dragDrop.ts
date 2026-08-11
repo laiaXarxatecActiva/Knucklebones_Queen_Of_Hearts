@@ -1,4 +1,6 @@
-import { endTurn } from "./turnSystem.js"
+import { endTurn } from "./turnSystem.js";
+import { currentPlayableDice } from "./diceController.js";
+import { GameBoard } from "./GameBoard.js";
 
 export function makeDraggable(item: HTMLElement): void {
     item.setAttribute("draggable", "true");
@@ -10,12 +12,10 @@ export function makeDraggable(item: HTMLElement): void {
 
     item.addEventListener("dragend", () => {
         item.classList.remove("dragging");
-        //test
-        //item.setAttribute("draggable", "false");
     });
 }
 
-export function makeDropZone(zone: HTMLElement): void {
+export function makeDropZone(zone: HTMLElement, gameBoard: GameBoard): void {
     zone.addEventListener("dragover", (e: DragEvent) => {
         e.preventDefault();
         zone.classList.add("drag-over");
@@ -30,22 +30,36 @@ export function makeDropZone(zone: HTMLElement): void {
         zone.classList.remove("drag-over");
 
         const draggedId = e.dataTransfer?.getData("text/plain");
+
         if (!draggedId) return;
 
         const draggedEl = document.getElementById(draggedId);
+
         if (!draggedEl) return;
 
         if (zone.children.length > 0) return;
 
+        const columnElement = zone.parentElement;
+
+        if (!columnElement) return;
+
+        const columnId = columnElement.id;
+
+        const columnIndex = Number(columnId.split("-").pop()) - 1;
+
+        gameBoard.addSymbol(columnIndex, currentPlayableDice.value);
+
         zone.appendChild(draggedEl);
 
         draggedEl.setAttribute("draggable", "false");
-        
+
         endTurn();
     });
 }
 
-export function initDragAndDrop(items: HTMLElement[], dropZones: HTMLElement[]): void {
-    items.forEach(makeDraggable);
-    dropZones.forEach(makeDropZone);
+export function initDragAndDrop(dropZones: HTMLElement[], playerBoard: GameBoard, opponentBoard: GameBoard): void {
+    dropZones.forEach(zone => {
+        const board = zone.id.startsWith("player-") ? playerBoard : opponentBoard;
+        makeDropZone(zone, board);
+    });
 }

@@ -1,11 +1,9 @@
 import { ScoreSystem } from "./ScoreSystem.js";
-import { generateDice } from "./diceController.js";
 
 export class GameBoard {
     container: HTMLElement;
     prefix: string;
     playerName: string;
-    //Add functionality to control board so SystemScores can work
     board: (number | null)[][];
     scoreSystem: ScoreSystem;
 
@@ -30,15 +28,6 @@ export class GameBoard {
         const randSymbol = document.createElement("div");
         randSymbol.className = "rand-item";
         randSymbol.id = `${this.prefix}-rand-item`;
-        //generateDice(this.prefix);
-        //console.log(randSymbol)
-       /* const img = document.createElement("img");
-        img.className = "dice";
-        img.id = `${this.prefix}-dice`;
-        img.alt = "";
-        img.draggable = true;
-
-        randSymbol.appendChild(img);*/
 
         /**
          * ======== GAME BOARD ========
@@ -68,6 +57,7 @@ export class GameBoard {
 
                 column.appendChild(cell);
             }
+
             columns.appendChild(column);
         }
 
@@ -82,7 +72,7 @@ export class GameBoard {
         for (let col = 1; col <= 3; col++) {
             const pointColumn = document.createElement("div");
             pointColumn.className = "column-points";
-            pointColumn.id = `${this.prefix}-column-points-${col}`
+            pointColumn.id = `${this.prefix}-column-points-${col}`;
 
             const p = document.createElement("p");
             p.textContent = "0";
@@ -94,7 +84,7 @@ export class GameBoard {
         /**
          * ======== NAME ========
          */
-        
+
         const name = document.createElement("div");
         name.className = "name";
         name.id = `${this.prefix}-name`;
@@ -107,7 +97,7 @@ export class GameBoard {
         /**
          * ======== SCORE ========
          */
-        
+
         const score = document.createElement("div");
         score.className = "score";
         score.id = `${this.prefix}-score`;
@@ -123,25 +113,40 @@ export class GameBoard {
         /**
          * ======== ARRANGE BOARDS ========
          */
-        
-        if (this.prefix == "opponent") {
+
+        if (this.prefix === "opponent") {
             gameBoard.append(columns, points, name);
             this.container.append(randSymbol, gameBoard, score);
-        
         } else {
             gameBoard.append(name, points, columns);
-            this.container.append(randSymbol, gameBoard, score)
+            this.container.append(randSymbol, gameBoard, score);
         }
     }
 
-    updateScoreDysplay(): void {
+    addSymbol(columnIndex: number, value: number): void {
+        const column = this.board[columnIndex];
+
+        if (!column) {return;}
+
+        const emptyCell = column.findIndex(cell => cell === null);
+
+        if (emptyCell === -1) {return;}
+
+        column[emptyCell] = value;
+
+        this.updateScoreDisplay();
+    }
+
+    updateScoreDisplay(): void {
         const columnScores = this.scoreSystem.calculateAllColumnScores(this.board);
+
         const totalScore = this.scoreSystem.calculateTotalScore(this.board);
 
-        columnScores.forEach((score, i) => {
+        columnScores.forEach((score, index) => {
             const pointColumn = document.getElementById(
-                `${this.prefix}-column-points-${i+1}`
+                `${this.prefix}-column-points-${index + 1}`
             );
+
             const scoreElement = pointColumn?.querySelector("p");
 
             if (scoreElement) {
@@ -149,24 +154,12 @@ export class GameBoard {
             }
         });
 
-        const totalElement = document.querySelector(`#${this.prefix}-score span`);
-    
+        const totalElement = document.querySelector(
+            `#${this.prefix}-score span`
+        );
+
         if (totalElement) {
             totalElement.textContent = totalScore.toString();
         }
-    }
-
-    addSymbol(columnIndex: number, value: number): void {
-        const column = this.board[columnIndex];
-
-        if (!column) return;
-
-        const emptyCell = column.findIndex(cell => cell === null);
-
-        if (emptyCell === -1) return;
-        
-        column[emptyCell] = value;
-
-        this.updateScoreDysplay();
     }
 }

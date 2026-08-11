@@ -12,19 +12,20 @@ export class ScoreSystem {
 
     calculateColumnScore(column: (number | null)[]) : number {
         const symbols = column.filter(
-            (value): value is number => value !==null
+            (value): value is number => value !== null
         );
 
         let score = 0;
         
-        /*for (const value of symbols) {
-            const occurrences = symbols.filter(
+        for (const value of symbols) {
+            const repetitions = symbols.filter(
                 symbol => symbol === value
             ).length;
 
-            score += value * occurrences;
-        }*/
+            score += value * repetitions;
+        }
 
+        /*    
         for (let i = 0; i <= symbols.length; i++) {
             let value = symbols[i];
             const occurrences = symbols.filter(
@@ -33,6 +34,8 @@ export class ScoreSystem {
 
             score += value * occurrences;
         }
+
+        */
 
         return score;
     }
@@ -46,8 +49,6 @@ export class ScoreSystem {
     // Calculate the total Score
 
     calculateTotalScore(board: BoardState): number {
-        const columnScores = this.calculateAllColumnScores(board);
-
-        return columnScores.reduce((total, score) => total + score,0);
+        return this.calculateAllColumnScores(board).reduce((total, score) => total + score,0);
     }
 }

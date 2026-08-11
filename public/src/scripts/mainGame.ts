@@ -1,14 +1,17 @@
 import { initDragAndDrop } from "./dragDrop.js";
 import { GameBoard } from "./GameBoard.js"
-import { showExplanation, showRoundInfo } from "./popUp.js";
+import { showExplanation } from "./popUp.js";
 import { initTurn } from "./turnSystem.js";
 
 // CREATING THE BOARDS 
 const opponentContainer = document.getElementById("opponent");
 const playerContainer = document.getElementById("player");
 
+let opponentBoard: GameBoard | undefined;
+let playerBoard: GameBoard | undefined;
+
 if (opponentContainer) {
-    const opponentBoard = new GameBoard(
+    opponentBoard = new GameBoard(
         opponentContainer, 
         "opponent", 
         "Reina de Naipes"
@@ -17,7 +20,7 @@ if (opponentContainer) {
 }
 
 if (playerContainer) {
-    const playerBoard = new GameBoard(
+    playerBoard = new GameBoard(
         playerContainer,
         "player",
         "Tú"
@@ -25,17 +28,18 @@ if (playerContainer) {
     playerBoard.create();
 }
 
+// Initialize Turn system
 
 initTurn();
 
+// ..... Drag&Drop .....
 
-// ..... TEST dragDrop .....
+//const diceItems = Array.from(document.querySelectorAll(".dice")) as HTMLElement[];
+const cells = Array.from(document.querySelectorAll(".cell")) as HTMLElement[];
 
-const diceItems = Array.from(document.querySelectorAll<HTMLElement>(".dice"));
-
-const cells = Array.from(document.querySelectorAll<HTMLElement>(".cell"));
-
-initDragAndDrop(diceItems, cells);
+if (playerBoard && opponentBoard) {
+    initDragAndDrop(cells, playerBoard, opponentBoard);
+}
 
 /*rollDice(playerDiceImage);
 rollDice(cpuDiceImage);*/
