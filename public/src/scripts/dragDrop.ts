@@ -40,9 +40,14 @@ export function makeDropZone(zone: HTMLElement, gameBoard: GameBoard): void {
         if (zone.children.length > 0) return;
 
         //This makes use of the addSymbol function to control the score
-        // the moment the symbol is droped inside the board
+        // the moment the symbol is dropped inside the board
         const columnElement = zone.parentElement;
         if (!columnElement) return;
+
+        //This prevents putting the dice on the wrong board 
+        if((gameBoard.prefix === "player" && currentPlayableDice.owner != 0)
+        || (gameBoard.prefix === "opponent" && currentPlayableDice.owner != 1)) return;
+        
         const columnId = columnElement.id;
         const columnIndex = Number(columnId.split("-").pop()) - 1;
         gameBoard.addSymbol(columnIndex, currentPlayableDice.value);
@@ -51,6 +56,7 @@ export function makeDropZone(zone: HTMLElement, gameBoard: GameBoard): void {
 
         draggedEl.setAttribute("draggable", "false");
 
+        //The turn ends the moment that the dice is placed in a valid column
         endTurn();
     });
 }

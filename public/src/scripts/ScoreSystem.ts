@@ -2,13 +2,13 @@ export type BoardState = (number | null)[][];
 
 export class ScoreSystem {
 
-    // This function calculates the socre of one column, 
+    // This function calculates the score of one column, 
 
     /* It checks the symbols on the columns, then takes them
     * It checks what value the symbols have
     * Initializes score to 0
-    * Then it aplyes the logic of adding the repeated numbers
-        and multiplying them for the amount of times they apear in
+    * Then it applies the logic of adding the repeated numbers
+        and multiplying them for the amount of times they appear in
         that same column
     * Then it  returns the score.
     */

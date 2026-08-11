@@ -35,7 +35,7 @@ initTurn();
 
 // ..... Drag&Drop .....
 
-//Because the items are controlled in drag&drop for socre, it no longer is needed in this
+//Because the items are controlled in drag&drop for score, it is no longer needed in this
 //const diceItems = Array.from(document.querySelectorAll(".dice")) as HTMLElement[];
 
 const cells = Array.from(document.querySelectorAll(".cell")) as HTMLElement[];
@@ -44,8 +44,5 @@ if (playerBoard && opponentBoard) {
     //And now it needs the player and opponentBoard
     initDragAndDrop(cells, playerBoard, opponentBoard);
 }
-
-/*rollDice(playerDiceImage);
-rollDice(cpuDiceImage);*/
 
 document.getElementById('how-to-play-btn')?.addEventListener('click', showExplanation);
