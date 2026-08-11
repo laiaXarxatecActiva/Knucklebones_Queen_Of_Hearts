@@ -1,37 +1,43 @@
+import { initDragAndDrop } from "./dragDrop.js";
+import { GameBoard } from "./GameBoard.js"
+import { showExplanation, showRoundInfo } from "./popUp.js";
+import { initTurn } from "./turnSystem.js";
 
+// CREATING THE BOARDS 
+const opponentContainer = document.getElementById("opponent");
+const playerContainer = document.getElementById("player");
 
+if (opponentContainer) {
+    const opponentBoard = new GameBoard(
+        opponentContainer, 
+        "opponent", 
+        "Reina de Naipes"
+    );
+    opponentBoard.create();
+}
 
-const PIKE ={
-    "value":0,
-    "src": "public/src/imgs/pike.png"
-}
-const CLUB ={
-    "value":0,
-    "src": "public/src/imgs/club.png"
-}
-const HEART ={
-    "value":0,
-    "src": "public/src/imgs/heart.png"
-}
-const DIAMOND ={
-    "value":0,
-    "src": "public/src/imgs/diamond.png"
-}
-function getRandomInt(min:number, max:number) {
-  const minCeiled = Math.ceil(min);
-  const maxFloored = Math.floor(max);
-  return Math.floor(Math.random() * (maxFloored - minCeiled) + minCeiled); // The maximum is exclusive and the minimum is inclusive
-}
-const cardSymbolList = [PIKE, CLUB, HEART, DIAMOND]
-
-var playerDiceImage = document.getElementById("playerDice") as HTMLImageElement;
-var cpuDiceImage = document.getElementById("cpuDice") as HTMLImageElement;
-
-function rollDice(dice:HTMLImageElement)
-{
-    dice.src = cardSymbolList[getRandomInt(0,cardSymbolList.length)].src
+if (playerContainer) {
+    const playerBoard = new GameBoard(
+        playerContainer,
+        "player",
+        "Tú"
+    );
+    playerBoard.create();
 }
 
 
-rollDice(playerDiceImage)
-rollDice(cpuDiceImage)
+initTurn();
+
+
+// ..... TEST dragDrop .....
+
+const diceItems = Array.from(document.querySelectorAll<HTMLElement>(".dice"));
+
+const cells = Array.from(document.querySelectorAll<HTMLElement>(".cell"));
+
+initDragAndDrop(diceItems, cells);
+
+/*rollDice(playerDiceImage);
+rollDice(cpuDiceImage);*/
+
+document.getElementById('how-to-play-btn')?.addEventListener('click', showExplanation);
