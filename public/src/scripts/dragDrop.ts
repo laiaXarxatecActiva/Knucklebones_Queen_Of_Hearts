@@ -55,14 +55,14 @@ export function makeDropZone(zone: HTMLElement, gameBoard: GameBoard): void {
         
         const zoneCol = Number(zoneId.split("-").slice(-2, -1)[0]) -1;
         let numRows = 3;
-        let i = 0;
-        while(i < numRows){
+        let zoneRow = 0;
+        while(zoneRow < numRows){
                 
-            if((gameBoard.cells[zoneCol][i]) && ((gameBoard.cells[zoneCol][i])?.children.length as number <= 0)){
-                zone = gameBoard.cells[zoneCol][i] as HTMLElement;
+            if((gameBoard.cells[zoneCol][zoneRow]) && ((gameBoard.cells[zoneCol][zoneRow])?.children.length as number <= 0)){
+                zone = gameBoard.cells[zoneCol][zoneRow] as HTMLElement;
                 break;
             }
-            i++;
+            zoneRow++;
         }
         //console.log(zone);
         
@@ -80,6 +80,7 @@ export function makeDropZone(zone: HTMLElement, gameBoard: GameBoard): void {
         zone.appendChild(draggedEl);
 
         draggedEl.setAttribute("draggable", "false");
+        
 
         //The turn ends the moment that the dice is placed in a valid column
         endTurn();
