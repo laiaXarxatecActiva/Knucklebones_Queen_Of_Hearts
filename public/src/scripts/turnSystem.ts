@@ -19,10 +19,13 @@ export function endTurn(){
     
     if(gameHasEnded()){
         console.log("La partida ha terminado!!")
+        getWinner()
+        if(winner === 0) console.log("Has ganado");
+        else if(winner === 1) console.log("La reina ha ganado")
+        else if(winner === 2) console.log("Empate")
         return;
         
-    }
-    if(winner===-1){
+    }else {
         changeTurn();
     }
 }
@@ -45,4 +48,11 @@ function gameHasEnded():Boolean{
             }
         }
     return true;
+}
+
+function getWinner(){
+    const playerPoints = Number(document.getElementById(`${currentPlayerBoard?.prefix}-score-value`)?.textContent);
+    const opponentPoints = Number(document.getElementById(`${currentOpponentBoard?.prefix}-score-value`)?.textContent);
+    winner= playerPoints > opponentPoints ? 0 : (playerPoints < opponentPoints ? 1 : 2)
+
 }

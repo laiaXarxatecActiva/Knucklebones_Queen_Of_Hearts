@@ -121,6 +121,7 @@ export class GameBoard {
         total.textContent = "Total:";
 
         const value = document.createElement("span");
+        value.id = `${this.prefix}-score-value`;
         value.textContent = "0";
 
         score.append(total, value);
