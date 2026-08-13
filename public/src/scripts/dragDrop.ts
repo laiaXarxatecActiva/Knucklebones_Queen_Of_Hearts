@@ -1,6 +1,4 @@
 import { endTurn } from "./turnSystem.js";
-// To implement the functionality of the socre, it would be needed
-// dice controller and Gameboard
 import { currentPlayableDice } from "./diceController.js";
 import { GameBoard } from "./GameBoard.js";
 
@@ -37,11 +35,10 @@ export function makeDropZone(zone: HTMLElement, gameBoard: GameBoard): void {
         const draggedEl = document.getElementById(draggedId);
         if (!draggedEl) return;
 
-        if (zone.children.length > 0) return;
-
         //This makes use of the addSymbol function to control the score
-        // the moment the symbol is dropped inside the board
+        // the moment the symbol is droped inside the board
         const columnElement = zone.parentElement;
+
         if (!columnElement) return;
 
         //This prevents putting the dice on the wrong board 
@@ -50,6 +47,28 @@ export function makeDropZone(zone: HTMLElement, gameBoard: GameBoard): void {
         
         const columnId = columnElement.id;
         const columnIndex = Number(columnId.split("-").pop()) - 1;
+       
+        //This ensures that the dice is positioned at the highest empty cell on the selected column
+        const zoneId = zone.id;
+        
+        const zoneCol = Number(zoneId.split("-").slice(-2, -1)[0]) -1;
+        let numRows = 3;
+        let zoneRow = 0;
+        while(zoneRow < numRows){
+                
+            if((gameBoard.cells[zoneCol][zoneRow]) && ((gameBoard.cells[zoneCol][zoneRow])?.children.length as number <= 0)){
+                zone = gameBoard.cells[zoneCol][zoneRow] as HTMLElement;
+                break;
+            }
+            zoneRow++;
+        }
+
+        if (zone.children.length > 0) return;
+
+        //This prevents putting the dice on the wrong board 
+        if((gameBoard.prefix === "player" && currentPlayableDice.owner != 0)
+        || (gameBoard.prefix === "opponent" && currentPlayableDice.owner != 1)) return;
+        
         gameBoard.addSymbol(columnIndex, currentPlayableDice.value);
 
         zone.appendChild(draggedEl);

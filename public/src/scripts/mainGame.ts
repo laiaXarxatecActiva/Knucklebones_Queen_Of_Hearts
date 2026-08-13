@@ -31,7 +31,7 @@ if (playerContainer) {
 
 // Initialize Turn system
 
-initTurn();
+initTurn(playerBoard,opponentBoard);
 
 // ..... Drag&Drop .....
 

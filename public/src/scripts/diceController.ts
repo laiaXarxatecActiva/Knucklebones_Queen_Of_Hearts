@@ -5,7 +5,6 @@ export let currentPlayableDice = {
     owner:0,
     value:0,
     img:""
-
 }
 
 /*// CREATING THE DICE
@@ -14,6 +13,7 @@ const playerDiceImage = document.getElementById("player-dice") as HTMLImageEleme
 const cpuDiceImage = document.getElementById("opponent-dice") as HTMLImageElement;*/
 
 // CREATING CARD SYMBOLS
+
 const DIAMOND = {
     value:1,
     src: "public/src/imgs/diamond.png"
@@ -77,9 +77,6 @@ export function generateDice(player:string):void{
     makeDraggable(diceImg);
     let container = document.getElementById(`${player}-rand-item`)
     container?.appendChild(diceImg);
-    console.log(diceImg)
-    console.log(`${player}-rand-item`)
-    console.log(container)
 }
 
 /*export function checkIfDiceCanMove():boolean{

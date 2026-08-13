@@ -6,12 +6,13 @@ export class GameBoard {
     playerName: string;
     board: (number | null)[][];
     scoreSystem: ScoreSystem;
+    cells: (HTMLDivElement | null)[][];
 
     constructor(container: HTMLElement, prefix:string, playerName: string) {
         this.container = container;
         this.prefix = prefix;
         this.playerName = playerName;
-        //This is meant to controll the columns and the cells of the board, initially empty
+        //This is meant to control the columns and the cells of the board, initially empty
         this.board = [
             [null, null, null],
             [null, null, null],
@@ -19,6 +20,12 @@ export class GameBoard {
         ];
         //This will be used to control the score. 
         this.scoreSystem = new ScoreSystem();
+
+        this.cells=[
+            [null, null, null],
+            [null, null, null],
+            [null, null, null]
+        ];
     }
 
     // Create the Board
@@ -51,18 +58,19 @@ export class GameBoard {
             const column = document.createElement("div");
             column.className = "column";
             column.id = `${this.prefix}-column-${col}`;
-
+            
             for (let row = 1; row <= 3; row++) {
                 const cell = document.createElement("div");
                 cell.className = "cell";
                 cell.id = `${this.prefix}-cell-${col}-${row}`;
 
                 column.appendChild(cell);
+                this.cells[col -1][row-1] = cell;
             }
 
             columns.appendChild(column);
         }
-
+        
         /**
          * ======== COLUMN'S POINTS ========
          */
@@ -108,6 +116,7 @@ export class GameBoard {
         total.textContent = "Total:";
 
         const value = document.createElement("span");
+        value.id = `${this.prefix}-score-value`;
         value.textContent = "0";
 
         score.append(total, value);

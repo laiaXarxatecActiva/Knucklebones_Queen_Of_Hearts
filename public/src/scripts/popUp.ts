@@ -90,3 +90,22 @@ export function showRoundInfo(): void {
         <p>Contenido pendiente...</p>
     `);
 }
+
+export function endGame(won: boolean): void {
+    if (won) {
+        openPopup(`
+            <div class "won">
+                <h2>La partida ha terminado!</h2>
+                <h2>HAS GANADO<h2>
+            </div>
+        `)
+    } else {
+        openPopup(`
+            <div class "lose">
+                <h2>La partida ha terminado!</h2>
+                <h2>Has perdido...<h2>
+                <h2>La Reina ha Ganado</h2>
+            </div>
+        `)
+    }
+}
