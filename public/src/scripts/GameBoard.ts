@@ -171,12 +171,36 @@ export class GameBoard {
     deleteColumnSymbols(column: number, value: number ):void{
         for(let i = 0; i < this.board[column].length; i++){
             if (this.board[column][i] === value){
-                console.log(this.cells[column][i])
                 this.cells[column][i]!.innerHTML = '';
                 this.board[column][i] = null;
+
             }
         }
-
+        this.reorderBoard();
         this.updateScoreDisplay();
+    }
+
+    reorderBoard():void{
+        let firstRowWithNoChild = -1;
+
+        for (let col = 0; col < this.cells.length; col++){
+            firstRowWithNoChild = -1;
+            for (let row = 0; row < this.cells[col].length; row++){
+                if((this.cells[col][row]?.children.length) as number <= 0) 
+                {
+                    if(firstRowWithNoChild === -1) firstRowWithNoChild = row;
+                }
+                else if(firstRowWithNoChild != -1){
+                    this.cells[col][firstRowWithNoChild]!.innerHTML = this.cells[col][row]!.innerHTML
+                    this.cells[col][row]!.innerHTML = '';
+                    this.board[col][firstRowWithNoChild] = this.board[col][row];
+                    this.board[col][row] = null;
+                    firstRowWithNoChild = row;
+                    row = firstRowWithNoChild;
+                }
+                
+                
+            }
+        }
     }
 }
