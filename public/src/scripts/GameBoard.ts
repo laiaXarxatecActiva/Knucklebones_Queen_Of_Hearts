@@ -7,7 +7,6 @@ export class GameBoard {
     board: (number | null)[][];
     scoreSystem: ScoreSystem;
     cells: (HTMLDivElement | null)[][];
-    
 
     constructor(container: HTMLElement, prefix:string, playerName: string) {
         this.container = container;
@@ -27,8 +26,6 @@ export class GameBoard {
             [null, null, null],
             [null, null, null]
         ];
-
-
     }
 
     // Create the Board
@@ -62,7 +59,6 @@ export class GameBoard {
             column.className = "column";
             column.id = `${this.prefix}-column-${col}`;
             
-
             for (let row = 1; row <= 3; row++) {
                 const cell = document.createElement("div");
                 cell.className = "cell";
@@ -75,7 +71,6 @@ export class GameBoard {
             columns.appendChild(column);
         }
         
-
         /**
          * ======== COLUMN'S POINTS ========
          */

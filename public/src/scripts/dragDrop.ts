@@ -1,6 +1,4 @@
 import { endTurn } from "./turnSystem.js";
-// To implement the functionality of the socre, it would be needed
-// dice controller and Gameboard
 import { currentPlayableDice } from "./diceController.js";
 import { GameBoard } from "./GameBoard.js";
 
@@ -38,17 +36,17 @@ export function makeDropZone(zone: HTMLElement, gameBoard: GameBoard): void {
         if (!draggedEl) return;
 
         //This makes use of the addSymbol function to control the score
-        // the moment the symbol is dropped inside the board
-        
-        
+        // the moment the symbol is droped inside the board
         const columnElement = zone.parentElement;
 
         if (!columnElement) return;
 
+        //This prevents putting the dice on the wrong board 
+        if((gameBoard.prefix === "player" && currentPlayableDice.owner != 0)
+        || (gameBoard.prefix === "opponent" && currentPlayableDice.owner != 1)) return;
+        
         const columnId = columnElement.id;
         const columnIndex = Number(columnId.split("-").pop()) - 1;
-
-        
        
         //This ensures that the dice is positioned at the highest empty cell on the selected column
         const zoneId = zone.id;
@@ -64,8 +62,6 @@ export function makeDropZone(zone: HTMLElement, gameBoard: GameBoard): void {
             }
             zoneRow++;
         }
-        //console.log(zone);
-        
 
         if (zone.children.length > 0) return;
 
@@ -73,14 +69,11 @@ export function makeDropZone(zone: HTMLElement, gameBoard: GameBoard): void {
         if((gameBoard.prefix === "player" && currentPlayableDice.owner != 0)
         || (gameBoard.prefix === "opponent" && currentPlayableDice.owner != 1)) return;
         
-        
-
         gameBoard.addSymbol(columnIndex, currentPlayableDice.value);
 
         zone.appendChild(draggedEl);
 
         draggedEl.setAttribute("draggable", "false");
-        
 
         //The turn ends the moment that the dice is placed in a valid column
         endTurn();

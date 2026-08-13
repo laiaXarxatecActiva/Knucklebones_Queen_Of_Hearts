@@ -5,7 +5,6 @@ export let currentPlayableDice = {
     owner:0,
     value:0,
     img:""
-
 }
 
 /*// CREATING THE DICE
@@ -14,6 +13,7 @@ const playerDiceImage = document.getElementById("player-dice") as HTMLImageEleme
 const cpuDiceImage = document.getElementById("opponent-dice") as HTMLImageElement;*/
 
 // CREATING CARD SYMBOLS
+
 const DIAMOND = {
     value:1,
     src: "public/src/imgs/diamond.png"
