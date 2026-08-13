@@ -91,21 +91,30 @@ export function showRoundInfo(): void {
     `);
 }
 
-export function endGame(won: boolean): void {
-    if (won) {
-        openPopup(`
-            <div class "won">
-                <h2>La partida ha terminado!</h2>
-                <h2>HAS GANADO<h2>
-            </div>
-        `)
-    } else {
-        openPopup(`
+export function endGame(won: Number): void {
+    let message = `
+        <div class "won">
+            <h2>La partida ha terminado!</h2>
+            <h2>HAS GANADO<h2>
+        </div>
+    `
+    if (won === 1) {
+        message = `
             <div class "lose">
                 <h2>La partida ha terminado!</h2>
                 <h2>Has perdido...<h2>
                 <h2>La Reina ha Ganado</h2>
             </div>
-        `)
+        `
+    } 
+    if (won === 2) {
+        message = `
+            <div class "same">
+                <h2>La partida ha terminado!</h2>
+                <h2>Has sido Empate<h2>
+                <h2>Nadie Gana</h2>
+            </div>
+        `
     }
+    openPopup(message);
 }

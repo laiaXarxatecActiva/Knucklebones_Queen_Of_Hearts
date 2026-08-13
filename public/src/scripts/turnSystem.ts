@@ -23,12 +23,8 @@ export function endTurn(){
         //if(winner === 0) console.log("Has ganado");
         //else if(winner === 1) console.log("La reina ha ganado")
         //else if(winner === 2) console.log("Empate")
-
-        let won = false;
         
-        if (winner === 0) won = true;
-        
-        endGame(won);
+        endGame(winner);
 
         return;
         
