@@ -15,7 +15,7 @@ export function makeDraggable(item: HTMLElement): void {
     });
 }
 
-export function makeDropZone(zone: HTMLElement, gameBoard: GameBoard): void {
+export function makeDropZone(zone: HTMLElement, gameBoard: GameBoard, otherPlayerBoard: GameBoard): void {
     zone.addEventListener("dragover", (e: DragEvent) => {
         e.preventDefault();
         zone.classList.add("drag-over");
@@ -70,10 +70,12 @@ export function makeDropZone(zone: HTMLElement, gameBoard: GameBoard): void {
         || (gameBoard.prefix === "opponent" && currentPlayableDice.owner != 1)) return;
         
         gameBoard.addSymbol(columnIndex, currentPlayableDice.value);
-
+        
         zone.appendChild(draggedEl);
 
         draggedEl.setAttribute("draggable", "false");
+
+        otherPlayerBoard.deleteColumnSymbols(zoneCol, currentPlayableDice.value);
 
         //The turn ends the moment that the dice is placed in a valid column
         endTurn();
@@ -85,7 +87,14 @@ export function makeDropZone(zone: HTMLElement, gameBoard: GameBoard): void {
 
 export function initDragAndDrop(dropZones: HTMLElement[], playerBoard: GameBoard, opponentBoard: GameBoard): void {
     dropZones.forEach(zone => {
-        const board = zone.id.startsWith("player-") ? playerBoard : opponentBoard;
-        makeDropZone(zone, board);
+        //const board = zone.id.startsWith("player-") ? playerBoard : opponentBoard;
+        //makeDropZone(zone, board);
+        if(zone.id.startsWith("player-")){
+            makeDropZone(zone, playerBoard,opponentBoard );
+        }
+        else {
+            makeDropZone(zone, opponentBoard, playerBoard );
+        }
+        
     });
 }

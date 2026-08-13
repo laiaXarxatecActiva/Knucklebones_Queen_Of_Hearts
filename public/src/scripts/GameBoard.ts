@@ -21,6 +21,7 @@ export class GameBoard {
         //This will be used to control the score. 
         this.scoreSystem = new ScoreSystem();
 
+        //This stores every div of every cell on the board
         this.cells=[
             [null, null, null],
             [null, null, null],
@@ -165,5 +166,17 @@ export class GameBoard {
         // This controls the total score
         const totalElement = document.querySelector(`#${this.prefix}-score span`);
         if (totalElement) totalElement.textContent = totalScore.toString();
+    }
+
+    deleteColumnSymbols(column: number, value: number ):void{
+        for(let i = 0; i < this.board[column].length; i++){
+            if (this.board[column][i] === value){
+                console.log(this.cells[column][i])
+                this.cells[column][i]!.innerHTML = '';
+                this.board[column][i] = null;
+            }
+        }
+
+        this.updateScoreDisplay();
     }
 }
