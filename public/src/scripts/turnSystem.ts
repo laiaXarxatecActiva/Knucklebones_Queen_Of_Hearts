@@ -11,7 +11,8 @@ let currentOpponentBoard : GameBoard | undefined;
 export function initTurn(playerBoard:  GameBoard | undefined, opponentBoard: GameBoard | undefined){
     turn = 0;
     generateDice("player");
-    console.log("Turno", turn)
+    currentPlayerBoard = playerBoard;
+    currentOpponentBoard = opponentBoard;    
 }
 
 export function endTurn(){

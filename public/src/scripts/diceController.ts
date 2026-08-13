@@ -77,9 +77,6 @@ export function generateDice(player:string):void{
     makeDraggable(diceImg);
     let container = document.getElementById(`${player}-rand-item`)
     container?.appendChild(diceImg);
-    //console.log(diceImg)
-    //console.log(`${player}-rand-item`)
-    //console.log(container)
 }
 
 /*export function checkIfDiceCanMove():boolean{
