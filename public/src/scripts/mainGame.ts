@@ -59,3 +59,9 @@ document.addEventListener('restart-game', () => {
     opponentBoard?.clearBoard();
     restartTurn();
 })
+
+document.getElementById('restart-side-btn')?.addEventListener('click', () => {
+    playerBoard?.clearBoard();
+    opponentBoard?.clearBoard();
+    restartTurn();
+})

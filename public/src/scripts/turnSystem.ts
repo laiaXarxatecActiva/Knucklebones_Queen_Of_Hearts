@@ -19,6 +19,10 @@ export function initTurn(playerBoard:  GameBoard | undefined, opponentBoard: Gam
 export function restartTurn() {
     turn = 0;
     winner = -1;
+
+    const opponentRand = document.getElementById('opponent-rand-item');
+    if (opponentRand) opponentRand.innerHTML = '';
+
     generateDice("player");
     updateTurnIndicator();
 }

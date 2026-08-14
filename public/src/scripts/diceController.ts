@@ -75,8 +75,14 @@ export function generateDice(player:string):void{
     diceImg.alt = "";
     diceImg.draggable = true;
     makeDraggable(diceImg);
-    let container = document.getElementById(`${player}-rand-item`)
-    container?.appendChild(diceImg);
+
+    const container = document.getElementById(`${player}-rand-item`);
+
+    if (container) {
+        container.innerHTML = '';
+        container.appendChild(diceImg);
+    }
+
 }
 
 /*export function checkIfDiceCanMove():boolean{
