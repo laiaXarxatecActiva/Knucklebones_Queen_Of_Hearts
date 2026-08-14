@@ -1,7 +1,7 @@
 import { initDragAndDrop } from "./dragDrop.js";
 import { GameBoard } from "./GameBoard.js";
 import { showExplanation } from "./popUp.js";
-import { initTurn } from "./turnSystem.js";
+import { initTurn, restartTurn } from "./turnSystem.js";
 
 // CREATING THE BOARDS 
 const opponentContainer = document.getElementById("opponent");
@@ -51,4 +51,5 @@ document.getElementById('how-to-play-btn')?.addEventListener('click', showExplan
 document.addEventListener('restart-game', () => {
     playerBoard?.clearBoard();
     opponentBoard?.clearBoard();
+    restartTurn();
 })

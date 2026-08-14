@@ -240,7 +240,23 @@ body {
   word-spacing: 0.4rem;
   letter-spacing: 0.2rem;
   text-align: center;
+  transition: color 0.2s ease, transform 0.2s ease;
+
 }
+
+.name.active-turn {
+  font-weight: bold;
+  transform: scale(1.05);
+}
+
+.name.active-turn p {
+  padding: 0.5rem;
+  border: 2px groove #d4af37;
+  border-radius: 5rem;
+  color: #d4af37; 
+  transform: scale(1.05);
+}
+
 
 .dice {
   height: 3.5rem;

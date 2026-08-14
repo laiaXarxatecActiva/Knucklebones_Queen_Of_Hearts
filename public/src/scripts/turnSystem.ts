@@ -10,9 +10,17 @@ let currentOpponentBoard : GameBoard | undefined;
 
 export function initTurn(playerBoard:  GameBoard | undefined, opponentBoard: GameBoard | undefined){
     turn = 0;
-    generateDice("player");
     currentPlayerBoard = playerBoard;
     currentOpponentBoard = opponentBoard;    
+    generateDice("player");
+    updateTurnIndicator();
+}
+
+export function restartTurn() {
+    turn = 0;
+    winner = -1;
+    generateDice("player");
+    updateTurnIndicator();
 }
 
 export function endTurn(){
@@ -36,6 +44,7 @@ export function endTurn(){
 function changeTurn(){
     turn = turn===0 ? 1 : 0;
     turn===0?generateDice("player"): generateDice("opponent");   
+    updateTurnIndicator();
 }
 
 function gameHasEnded():Boolean{
@@ -56,4 +65,12 @@ function getWinner(){
     const playerPoints = Number(document.getElementById(`${currentPlayerBoard?.prefix}-score-value`)?.textContent);
     const opponentPoints = Number(document.getElementById(`${currentOpponentBoard?.prefix}-score-value`)?.textContent);
     winner= playerPoints > opponentPoints ? 0 : (playerPoints < opponentPoints ? 1 : 2)
+}
+
+export function updateTurnIndicator(): void {
+    const playerName = document.getElementById('player-name');
+    const opponentName = document.getElementById('opponent-name');
+    
+    playerName?.classList.toggle('active-turn', turn == 0);
+    opponentName?.classList.toggle('active-turn', turn == 1);
 }
