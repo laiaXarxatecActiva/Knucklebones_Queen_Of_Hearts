@@ -1,6 +1,6 @@
 import { initDragAndDrop } from "./dragDrop.js";
 import { GameBoard } from "./GameBoard.js";
-import { showExplanation } from "./popUp.js";
+import { showExplanation, showRoundInfo } from "./popUp.js";
 import { initTurn, restartTurn } from "./turnSystem.js";
 
 // CREATING THE BOARDS 
@@ -46,6 +46,12 @@ if (playerBoard && opponentBoard) {
 }
 
 document.getElementById('how-to-play-btn')?.addEventListener('click', showExplanation);
+
+document.getElementById('round-info-btn')?.addEventListener('click', () => {
+    const playerScore = document.getElementById('player-score-value')?.textContent ?? '0';
+    const opponentScore = document.getElementById('opponent-score-value')?.textContent ?? '0';
+    showRoundInfo(opponentScore, playerScore);
+});
 
 // Restart Game upon End Game
 document.addEventListener('restart-game', () => {

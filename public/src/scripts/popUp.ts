@@ -86,10 +86,19 @@ export function showExplanation(): void {
     `);
 }
 
-export function showRoundInfo(): void {
+export function showRoundInfo(opponentScore: string, playerScore: string): void {
     openPopup(`
         <h2>Información de la partida</h2>
-        <p>Contenido pendiente...</p>
+        <table class = "score-table">
+            <tr>
+                <td>Tú</td>
+                <td>Reina de la Baraja</td>
+            </tr>
+            <tr>
+                <td>${playerScore}</td>
+                <td>${opponentScore}</td>
+            </tr>
+        </table>
     `);
 }
 
