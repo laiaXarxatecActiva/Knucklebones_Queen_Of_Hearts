@@ -203,4 +203,23 @@ export class GameBoard {
             }
         }
     }
+
+    clearBoard(): void {
+        this.board = [
+            [null, null, null],
+            [null, null, null],
+            [null, null, null]
+        ];
+
+        for (let col = 0; col < this.cells.length; col++) {
+            for (let row = 0; row < this.cells[col].length; row++) {
+                const cell = this.cells[col][row];
+                if (cell) {
+                    cell.innerHTML = '';
+                }
+            }
+        }
+        this.updateScoreDisplay();
+    }
+
 }

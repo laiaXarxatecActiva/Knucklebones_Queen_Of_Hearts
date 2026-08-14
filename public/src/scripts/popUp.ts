@@ -1,4 +1,4 @@
-function openPopup(contentHtml: string): void {
+function openPopup(contentHtml: string): () => void {
     const overlay = document.createElement('div');
     overlay.className = 'popup-overlay';
 
@@ -38,6 +38,8 @@ function openPopup(contentHtml: string): void {
     });
 
     requestAnimationFrame(() => overlay.classList.add('popup-open'));
+    
+    return close;
 }
 
 export function showExplanation(): void {
@@ -93,28 +95,37 @@ export function showRoundInfo(): void {
 
 export function endGame(won: Number): void {
     let message = `
-        <div class "won">
+        <div class = "end-game won">
             <h2>La partida ha terminado!</h2>
             <h2>HAS GANADO<h2>
+    `;
+    let buttonBit = `
+            <button type="button" class="restart-btn" id="restart-btn">
+                    Nueva partida
+            </button>
         </div>
-    `
+    `;
     if (won === 1) {
         message = `
-            <div class "lose">
+            <div class = "end-game lose">
                 <h2>La partida ha terminado!</h2>
                 <h2>Has perdido...<h2>
                 <h2>La Reina ha Ganado</h2>
-            </div>
         `
     } 
     if (won === 2) {
         message = `
-            <div class "same">
+            <div class = "end-game same">
                 <h2>La partida ha terminado!</h2>
                 <h2>Has sido Empate<h2>
                 <h2>Nadie Gana</h2>
-            </div>
         `
     }
-    openPopup(message);
+    message = message+buttonBit;
+    const closePopup = openPopup(message);
+
+    document.getElementById('restart-btn')?.addEventListener('click', () => {
+        document.dispatchEvent(new CustomEvent('restart-game'));
+        closePopup();
+    });
 }

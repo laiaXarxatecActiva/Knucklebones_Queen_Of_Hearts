@@ -1,5 +1,5 @@
 import { initDragAndDrop } from "./dragDrop.js";
-import { GameBoard } from "./GameBoard.js"
+import { GameBoard } from "./GameBoard.js";
 import { showExplanation } from "./popUp.js";
 import { initTurn } from "./turnSystem.js";
 
@@ -46,3 +46,9 @@ if (playerBoard && opponentBoard) {
 }
 
 document.getElementById('how-to-play-btn')?.addEventListener('click', showExplanation);
+
+// Restart Game upon End Game
+document.addEventListener('restart-game', () => {
+    playerBoard?.clearBoard();
+    opponentBoard?.clearBoard();
+})

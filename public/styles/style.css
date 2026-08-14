@@ -413,3 +413,38 @@ body {
 .popup-body tbody img{
   height: 3rem;
 }
+
+/* ============= End Game Popup ============= */
+
+.end-game {
+  text-align: center;
+  padding: 1rem;
+}
+
+.end-game h2 {
+  margin-bottom: 1rem;
+}
+
+.restart-btn {
+  margin-top: 1.5rem;
+  padding: 0.8rem 1.5rem;
+  border: 2px solid var(--accent);
+  border-radius: 0.6rem;
+  background-color: #690820;
+  color: var(--main-text);
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.restart-btn:hover {
+  background-color: #550b0b;
+  transform: scale(1.05);
+}
+
+.restart-btn:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
