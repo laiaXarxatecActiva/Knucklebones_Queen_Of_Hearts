@@ -10,6 +10,7 @@
   --toggle-size: 44px;
 }
 
+/* ============= General ============= */
 * {
   box-sizing: border-box;
   margin: 0;
@@ -17,10 +18,16 @@
 }
 
 body {
-  font-family:Georgia, 'Times New Roman', Times, serif;
+  font-family: Georgia, 'Times New Roman', Times, serif;
   background: var(--main-bg);
   color: var(--main-text);
   min-height: 100vh;
+}
+
+h1, h2, h3 {
+  color: #9e89bd;
+  letter-spacing: 0.2rem;
+  word-spacing: 0.5rem;
 }
 
 .layout {
@@ -41,6 +48,7 @@ body {
 }
 
 .sidebar-title {
+  padding: 1rem;
   font-size: 1.4rem;
   text-transform: uppercase;
   letter-spacing: 0.1em;
@@ -73,10 +81,188 @@ body {
   outline: none;
 }
 
-/* ============= Main ============= */
+/* ============= Start Page ============= */
+
+.start-main-content {
+  flex: 1;
+  padding: 2rem 3rem;
+  text-align: justify;
+  letter-spacing: 0.1rem;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+.start-main-content h1 {
+  margin-bottom: 3rem;
+}
+
+.start-main-content p {
+  margin-bottom: 1.5rem;
+  font-size: 1.2rem;
+  line-height: 2rem;
+}
+
+/* ============= Start Button ============= */
+.start-btn-div {
+  margin-top: 6rem;
+  display: flex;
+  justify-content: center;
+}
+
+button {
+  padding: 1rem;
+  border: 2px double var(--accent);
+  border-radius: 0.6rem;
+  background-color: #690820;
+  color: #d5ddf1;
+  font-size: 1rem;
+}
+
+.start-button {
+  padding: 2rem;
+  font-size: 2rem;
+  text-transform: uppercase;
+  letter-spacing: 0.2rem;
+  word-spacing: 1rem;
+  font-weight: bold;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  cursor: pointer;
+  transition:
+    background-color 0.2s ease,
+    border-color 0.2s ease,
+    color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.start-button:hover {
+  background-color: #690404;
+  border-color: #d4af37;
+  color: #ffdf75;
+  transform: scale(1.05);
+}
+
+/* =========================================================
+   INLINE RULES
+   ========================================================= */
+
+.rules-section {
+  margin-top: 6rem;
+}
+
+.rules-section p{
+  margin-bottom: 1.5rem;
+  font-size: 1.2rem;
+  line-height: 2rem;
+}
+
+
+/* ============= Inline Rules Titles ============= */
+
+.rules-title,
+.rules-subtitle {
+  margin-bottom: 2rem;
+}
+
+.rules-title {
+  font-size: 2rem;
+}
+
+.rules-subtitle {
+  font-size: 1.4rem;
+}
+
+/* ============= Inline Rules Text ============= */
+.rules-text {
+  margin-bottom: 0.5rem;
+  line-height: 1.6rem;
+  font-size: 1rem;
+}
+
+/* ============= Inline Rules Dividers ============= */
+.rules-divider {
+  margin: 1rem 0;
+  border: none;
+}
+
+/* ============= Inline Rules Examples ============= */
+.rules-example {
+  margin: 1.5rem 0 2rem;
+}
+
+.rules-example-board {
+  margin: 1.5rem 0 0;
+  padding: 0.75rem;
+  border-radius: 0.5rem;
+  overflow-x: auto;
+  font-family: 'Courier New', Courier, monospace;
+  line-height: 1.5rem;
+  letter-spacing: 0.1rem;
+  text-align: center;
+  background-color: #2e2f41;
+}
+
+.rules-calculation {
+  margin-top: 0.75rem;
+  text-align: center;
+}
+
+/* ============= Inline Rules Table ============= */
+.rules-table-wrapper {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.rules-table {
+  font-family: 'Courier New', Courier, monospace;
+  font-weight: bold;
+  border-collapse: collapse;
+  width: 100%;
+  margin: 2rem 0;
+  font-size: 0.95rem;
+}
+
+.rules-table th,
+.rules-table td {
+  border: 2px solid #a5b2d5;
+  padding: 0.6rem;
+  text-align: center;
+  background-color: #7f6e99;
+}
+
+.rules-table th {
+  color: #ffffff;
+  font-weight: bold;
+}
+
+.rules-table td {
+  color: #ffffff;
+}
+
+.rules-table td:first-child {
+  min-width: 10rem;
+  font-weight: bold;
+}
+
+.rules-table tbody img {
+  display: block;
+  height: 3rem;
+  width: auto;
+  margin: 0 auto 0.4rem;
+}
+
+.rules-table td span {
+  display: block;
+}
+
+.rules-table tbody tr:hover td {
+  background-color: #6f6088;
+}
+
+/* =========================================================
+   GAME MAIN
+   ========================================================= */
 
 .main-content {
-  flex: 1;    
+  flex: 1;
   display: flex;
   padding: 4rem;
 }
@@ -96,11 +282,11 @@ body {
 }
 
 .game-environment {
-    display: grid;
-    grid-template-columns: auto auto auto;
-    grid-template-rows: auto auto;
-    justify-content: center;
-    column-gap: 2rem;
+  display: grid;
+  grid-template-columns: auto auto auto;
+  grid-template-rows: auto auto;
+  justify-content: center;
+  column-gap: 2rem;
 }
 
 .game-board {
@@ -121,12 +307,15 @@ body {
   grid-template-rows: auto auto auto;
 }
 
-.cell{
+.cell {
   height: 6rem;
   background-color: #a280b1;
   text-align: center;
   align-content: center;
 }
+
+
+/* ============= Board Corners ============= */
 
 #player-cell-1-1,
 #opponent-cell-1-1 {
@@ -134,8 +323,7 @@ body {
 }
 
 #player-cell-1-3,
-#opponent-cell-1-3
-{
+#opponent-cell-1-3 {
   border-radius: 0 0 0 1rem;
 }
 
@@ -149,13 +337,15 @@ body {
   border-radius: 0 0 1rem 0;
 }
 
+/* ============= Points ============= */
+
 .points {
   display: grid;
   grid-template-columns: auto auto auto;
   border-radius: 0.5rem;
   border: 0.2rem double var(--accent);
   background-color: #690820;
-  font-family:'Courier New', Courier, monospace;
+  font-family: 'Courier New', Courier, monospace;
   letter-spacing: 0.1rem;
   font-weight: bold;
 }
@@ -174,7 +364,10 @@ body {
   margin-top: 1rem;
 }
 
-.rand-item, .score {
+/* ============= Random Item / Score ============= */
+
+.rand-item,
+.score {
   height: 6rem;
   width: 6rem;
   border-radius: 1rem;
@@ -190,14 +383,16 @@ body {
 
 .score {
   border-color: #f3eded;
-  font-family:'Courier New', Courier, monospace;
+  font-family: 'Courier New', Courier, monospace;
   letter-spacing: 0.1rem;
   font-weight: bold;
 }
 
-.score p{
+.score p {
   margin-bottom: 0.6rem;
 }
+
+/* ============= Player Layout ============= */
 
 #player .rand-item {
   grid-column: 1;
@@ -231,8 +426,10 @@ body {
 
 #player .rand-item {
   grid-column: 1;
-  grid-row: 2;  
+  grid-row: 2;
 }
+
+/* ============= Names ============= */
 
 .name {
   text-transform: uppercase;
@@ -240,8 +437,9 @@ body {
   word-spacing: 0.4rem;
   letter-spacing: 0.2rem;
   text-align: center;
-  transition: color 0.2s ease, transform 0.2s ease;
-
+  transition:
+    color 0.2s ease,
+    transform 0.2s ease;
 }
 
 .name.active-turn {
@@ -253,7 +451,7 @@ body {
   padding: 0.5rem;
   border: 2px groove #d4af37;
   border-radius: 5rem;
-  color: #ffdf75; 
+  color: #ffdf75;
   transform: scale(1.05);
 }
 
@@ -262,7 +460,10 @@ body {
   width: auto;
 }
 
-/* ============= Toggle control ============= */
+/* =========================================================
+   SIDEBAR TOGGLE
+   ========================================================= */
+
 .sidebar-toggle-checkbox {
   display: none;
 }
@@ -297,9 +498,179 @@ body {
   display: none;
 }
 
-/* ============= Comportamiento Responsive ============= */
+/* =========================================================
+   POPUP SYSTEM
+   ========================================================= */
+
+.popup-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease;
+  z-index: 10000;
+}
+
+.popup-overlay.popup-open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* ============= Popup Box ============= */
+.popup-box {
+  position: relative;
+  width: 90%;
+  max-width: 60rem;
+  max-height: 80vh;
+  overflow-y: auto;
+  padding: 3rem;
+  background: #2e2f41;
+  color: var(--main-text);
+  border-radius: 1rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  font-family: Arial, Helvetica, sans-serif;
+  letter-spacing: 0.1rem;
+  word-spacing: 0.2rem;
+}
+
+
+/* ============= Popup Close Button ============= */
+
+.popup-close {
+  position: sticky;
+  top: 0;
+  display: block;
+  margin-left: auto;
+  padding: 1rem;
+  background-color: #530012;
+  color: var(--main-text);
+  border: 2px solid #b8113b;
+  border-radius: 100rem;
+  font-size: 1.5rem;
+  line-height: 1;
+  cursor: pointer;
+  z-index: 2;
+}
+
+.popup-close:hover {
+  background-color: #690820;
+  color: #ffdf75;
+}
+
+
+/* ============= Popup Body ============= */
+
+.popup-body h2,
+.popup-body h3 {
+  color: #9e89bd;
+
+  margin-bottom: 1rem;
+}
+
+.popup-body h2 {
+  font-size: 2rem;
+}
+
+.popup-body h3 {
+  font-size: 1.4rem;
+}
+
+.popup-body p {
+  padding: 0.6rem 0;
+  line-height: 1.6rem;
+}
+
+.popup-body hr {
+  margin: 3rem 0;
+  border: none;
+  border-top: 1px solid #86529e;
+}
+
+.popup-body pre {
+  background: #1e222b;
+  margin: 1.5rem 0 0;
+  padding: 0.75rem;
+  border-radius: 4px;
+  overflow-x: auto;
+}
+
+.popup-body table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 2rem 0;
+}
+
+.popup-body th,
+.popup-body td {
+  border: 2px solid #a5b2d5;
+  padding: 0.6rem;
+  text-align: center;
+  background-color: #7f6e99;
+}
+
+.popup-body tbody img {
+  height: 3rem;
+}
+
+
+/* =========================================================
+   END GAME POPUP
+   ========================================================= */
+
+.end-game {
+  text-align: center;
+  padding: 1rem;
+}
+
+.end-game h2 {
+  margin-bottom: 1rem;
+}
+
+.restart-btn {
+  margin-top: 1.5rem;
+  padding: 0.8rem 1.5rem;
+  border: 2px solid var(--accent);
+  border-radius: 0.6rem;
+  background-color: #690820;
+  color: var(--main-text);
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition:
+    background-color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.restart-btn:hover {
+  background-color: #550b0b;
+  transform: scale(1.05);
+}
+
+.restart-btn:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
+.score-table td {
+  padding: 1rem;
+  text-transform: uppercase;
+  background-color: #1e222b;
+  width: 50%;
+}
+
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
 @media (max-width: 808px) {
 
+  /* ============= Sidebar ============= */
   .sidebar-toggle-label {
     display: flex;
   }
@@ -325,148 +696,113 @@ body {
 
   .sidebar-toggle-checkbox:checked ~ .layout .sidebar {
     transform: translateX(0);
-
   }
 
   .sidebar-toggle-checkbox:checked ~ .layout .sidebar-overlay {
     display: block;
   }
 
+  /* ============= Main Content ============= */
   .main-content {
     padding: 4.5rem 1.25rem 1.5rem;
+  }
+
+  .start-main-content {
+    padding: 5rem 3rem;
+  }
+
+  /* ============= Inline Rules ============= */
+  .rules-title {
+    font-size: 1.7rem;
+  }
+
+  .rules-subtitle {
+    font-size: 1.2rem;
+  }
+
+  .rules-table-wrapper {
+    overflow-x: auto;
+  }
+
+  .rules-table {
+    min-width: 600px;
+  }
+
+
+  /* ============= Popup ============= */
+
+  .popup-box {
+    width: 94%;
+
+    max-height: 85vh;
+
+    padding: 2rem 1.5rem;
+  }
+
+  .popup-body table {
+    min-width: 600px;
   }
 }
 
 
-/* ============= Para los POPUP ============= */
-.popup-overlay {
-  position: fixed;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.6);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.2s ease;
-  z-index: 10000;
-}
-.popup-overlay.popup-open {
-  opacity: 1;
-  pointer-events: auto;
-}
-.popup-box {
-  position: relative;
-  background: #2e2f41;
-  color: var(--main-text);
-  font-family: Arial, Helvetica, sans-serif;
-  letter-spacing: 0.1rem;
-  word-spacing: 0.2rem;
-  border-radius: 1rem;
-  max-width: 60rem;
-  width: 90%;
-  max-height: 80vh;
-  overflow-y: auto;
-  padding: 3rem;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.3);
-}
-.popup-close {
-  position: sticky;
-  top: 0rem;
-  left: 50rem;
-  font-size: 1.5rem;
-  background: none;
-  cursor: pointer;
-  line-height: 1;
-  color: var(--main-text);
-  background-color: #530012;
-  border: 2px solid #b8113b;
-  padding: 1rem;
-  border-radius: 100rem;
-}
-.popup-body table {
-  border-collapse: collapse;
-  width: 100%;
-  margin: 2rem 0;
-}
-.popup-body th, .popup-body td {
-  border: 2px solid #a5b2d5;
-  padding: 0.6rem 0.6rem;
-  text-align: center;
-  background-color: #7f6e99;
-}
-.popup-body pre {
-  background: #1e222b;
-  margin: 1.5rem 0rem 0rem 0rem;
-  padding: 0.75rem;
-  border-radius: 4px;
-  overflow-x: auto;
-}
-.popup-body blockquote {
-  border-left: 3px solid #999;
-  margin: 1rem 0;
-  padding-left: 1rem;
-  color: #8d8caa;
-  font-style: italic;
-}
+/* =========================================================
+   SMALL MOBILE
+   ========================================================= */
 
-.popup-body h2, h3 {
-  color: #9e89bd;
-  margin-bottom: 1rem;
-}
+@media (max-width: 500px) {
 
-.popup-body hr {
-  color: #86529e;
-  margin: 3rem;
-}
+  .start-main-content {
+    padding: 5rem 1.25rem 2rem;
+  }
 
-.popup-body p {
-  padding: 0.6rem 0rem;
-  line-height: 1.6rem;
-}
 
-.popup-body tbody img{
-  height: 3rem;
-}
+  /* ============= Inline Rules ============= */
 
-/* ============= End Game Popup ============= */
+  .rules-title {
+    font-size: 1.5rem;
+  }
 
-.end-game {
-  text-align: center;
-  padding: 1rem;
-}
+  .rules-subtitle {
+    font-size: 1.1rem;
+  }
 
-.end-game h2 {
-  margin-bottom: 1rem;
-}
+  .rules-text {
+    font-size: 0.95rem;
+    line-height: 1.5rem;
+  }
 
-.restart-btn {
-  margin-top: 1.5rem;
-  padding: 0.8rem 1.5rem;
-  border: 2px solid var(--accent);
-  border-radius: 0.6rem;
-  background-color: #690820;
-  color: var(--main-text);
-  font-family: Georgia, 'Times New Roman', Times, serif;
-  font-size: 1rem;
-  font-weight: bold;
-  cursor: pointer;
-  transition: background-color 0.2s ease, transform 0.2s ease;
-}
+  .rules-example-board {
+    font-size: 1rem;
+  }
 
-.restart-btn:hover {
-  background-color: #550b0b;
-  transform: scale(1.05);
-}
+  .rules-table {
+    min-width: 600px;
+  }
 
-.restart-btn:focus-visible {
-  outline: 2px solid var(--accent);
-  outline-offset: 3px;
-}
 
-.score-table td{
-  padding: 1rem;
-  text-transform: uppercase;
-  background-color: #1e222b;
-  width: 50%;
+  /* ============= Popup ============= */
+
+  .popup-box {
+    width: 96%;
+    max-height: 90vh;
+    padding: 1.5rem 1rem;
+  }
+
+  .popup-close {
+    padding: 0.75rem;
+    font-size: 1.2rem;
+  }
+
+  .popup-body h2 {
+    font-size: 1.5rem;
+  }
+
+  .popup-body h3 {
+    font-size: 1.1rem;
+  }
+
+  .popup-body p {
+    font-size: 0.95rem;
+    line-height: 1.5rem;
+  }
 }
