@@ -2,11 +2,7 @@ import { makeDraggable } from "./dragDrop.js";
 import { turn } from "./turnSystem.js"
 import { Dice } from "./Dice.js";
 
-/*export let currentPlayableDice = {
-    owner:0,
-    value:0,
-    img:""
-}*/
+
 export let currentPlayableDice = new Dice(0, 0, "");
 
 /*// CREATING THE DICE
@@ -61,11 +57,7 @@ function getRandomInt(min: number, max: number): number {
 
 function rollDice(): void {
     let randomDice = cardSymbolList[getRandomInt(0, cardSymbolList.length)];
-    /*currentPlayableDice ={
-        owner: turn,
-        value: randomDice.value,
-        img: randomDice.src
-    }*/
+    
    currentPlayableDice.owner = turn;
    currentPlayableDice.value = randomDice.value;
    currentPlayableDice.img = randomDice.src;
@@ -78,8 +70,11 @@ export function generateDice(player:string):void{
     diceImg.className = "dice";
     diceImg.id = `${player}-dice`;
     diceImg.alt = "";
-    diceImg.draggable = true;
-    makeDraggable(diceImg);
+    if(player==="player"){
+        diceImg.draggable = true;
+        makeDraggable(diceImg);
+    }
+    
 
     const container = document.getElementById(`${player}-rand-item`);
 
@@ -90,6 +85,3 @@ export function generateDice(player:string):void{
 
 }
 
-/*export function checkIfDiceCanMove():boolean{
-    return turn===currentPlayableDice.owner;
-}*/

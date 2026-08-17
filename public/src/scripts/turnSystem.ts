@@ -46,7 +46,7 @@ export function endTurn(){
 
 function changeTurn(){
     turn = turn===0 ? 1 : 0;
-    //turn===0?generateDice("player"): generateDice("opponent");   
+     
     if (turn===0)generateDice("player");
     else  {
         generateDice("opponent");

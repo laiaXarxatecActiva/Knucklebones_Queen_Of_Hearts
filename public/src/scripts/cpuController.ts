@@ -8,12 +8,10 @@ let board : GameBoard | undefined;
 export function cpuPlay(cpuBoard: GameBoard, playerBoard:GameBoard){
     board = cpuBoard;
     let cpuMovement= new CpuMovement(cpuTurn, board, playerBoard);
-    //console.log(currentPlayableDice)
+    //Simulate "thinking" time
     setTimeout(() =>{
         cpuMovement.placeDice(currentPlayableDice, getRandomColumn())
     },1000)
-    
-    
 }
 
 
