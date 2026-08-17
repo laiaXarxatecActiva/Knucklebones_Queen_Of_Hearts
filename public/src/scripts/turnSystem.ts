@@ -1,6 +1,7 @@
 import { generateDice } from "./diceController.js";
 import { GameBoard } from "./GameBoard.js";
 import { endGame } from "./popUp.js";
+import { cpuPlay } from "./cpuController.js";
 
 export let turn = 0;
 let winner = -1;
@@ -32,9 +33,7 @@ export function endTurn(){
     if(gameHasEnded()){
         console.log("La partida ha terminado!!")
         getWinner()
-        //if(winner === 0) console.log("Has ganado");
-        //else if(winner === 1) console.log("La reina ha ganado")
-        //else if(winner === 2) console.log("Empate")
+        
         
         endGame(winner);
 
@@ -47,7 +46,12 @@ export function endTurn(){
 
 function changeTurn(){
     turn = turn===0 ? 1 : 0;
-    turn===0?generateDice("player"): generateDice("opponent");   
+    //turn===0?generateDice("player"): generateDice("opponent");   
+    if (turn===0)generateDice("player");
+    else  {
+        generateDice("opponent");
+        cpuPlay(currentOpponentBoard as GameBoard, currentPlayerBoard as GameBoard);
+    }
     updateTurnIndicator();
 }
 
