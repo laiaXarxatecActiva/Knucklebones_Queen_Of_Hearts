@@ -18,16 +18,17 @@
 }
 
 body {
-  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
   background: var(--main-bg);
   color: var(--main-text);
   min-height: 100vh;
 }
 
 h1, h2, h3 {
-  color: #9e89bd;
+  color: #b9a0dd;
   letter-spacing: 0.2rem;
   word-spacing: 0.5rem;
+  margin-bottom: 3rem;
 }
 
 .layout {
@@ -85,20 +86,28 @@ h1, h2, h3 {
 
 .start-main-content {
   flex: 1;
-  padding: 2rem 3rem;
+  padding: 2rem 5.5rem;
   text-align: justify;
   letter-spacing: 0.1rem;
-  font-family: Georgia, 'Times New Roman', Times, serif;
-}
-
-.start-main-content h1 {
-  margin-bottom: 3rem;
 }
 
 .start-main-content p {
+  text-decoration: none;
   margin-bottom: 1.5rem;
   font-size: 1.2rem;
   line-height: 2rem;
+}
+
+.start-content-ps {
+  border-radius: 0.5rem;
+  padding: 2rem;
+  background-color: #282d39;
+  margin-bottom: 4rem;
+
+}
+
+.start-main-content strong{
+  color: #ff5d7d;
 }
 
 /* ============= Start Button ============= */
@@ -154,9 +163,6 @@ button {
   line-height: 2rem;
 }
 
-
-/* ============= Inline Rules Titles ============= */
-
 .rules-title,
 .rules-subtitle {
   margin-bottom: 2rem;
@@ -170,20 +176,17 @@ button {
   font-size: 1.4rem;
 }
 
-/* ============= Inline Rules Text ============= */
 .rules-text {
   margin-bottom: 0.5rem;
   line-height: 1.6rem;
   font-size: 1rem;
 }
 
-/* ============= Inline Rules Dividers ============= */
 .rules-divider {
   margin: 1rem 0;
   border: none;
 }
 
-/* ============= Inline Rules Examples ============= */
 .rules-example {
   margin: 1.5rem 0 2rem;
 }
@@ -207,6 +210,8 @@ button {
 
 /* ============= Inline Rules Table ============= */
 .rules-table-wrapper {
+  display: flex;
+  justify-content: center;
   width: 100%;
   overflow-x: auto;
 }
@@ -215,15 +220,19 @@ button {
   font-family: 'Courier New', Courier, monospace;
   font-weight: bold;
   border-collapse: collapse;
-  width: 100%;
+  width: 80%;
   margin: 2rem 0;
-  font-size: 0.95rem;
+  font-size: 1rem;
+}
+
+.rules-table th {
+  text-transform: uppercase;
 }
 
 .rules-table th,
 .rules-table td {
-  border: 2px solid #a5b2d5;
-  padding: 0.6rem;
+  border: 2.5px solid #a5b2d5;
+  padding: 1rem;
   text-align: center;
   background-color: #7f6e99;
 }
