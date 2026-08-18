@@ -9,25 +9,20 @@ let humanBoard : GameBoard | undefined;
 export function cpuPlay(cpuBoard: GameBoard, playerBoard:GameBoard){
     board = cpuBoard;
     humanBoard = playerBoard;
-    //console.log(playerBoard)
-    //console.log(board)
-    /*let cpuMovement= new CpuMovement(cpuTurn, board, playerBoard);
-    //Simulate "thinking" time
-    setTimeout(() =>{
-        cpuMovement.placeDice(currentPlayableDice, getRandomColumn())
-    },1000)*/
+    
     let cpuMovement= new CpuMovement(cpuTurn, board as GameBoard, humanBoard as GameBoard);
     let simulationBoards = [];
     //let bestColumn=0;
     //let diceValue = currentPlayableDice.value;
     for(let col=0; col < board.board.length; col++){
         let simulatedBoard = new SimulatedBoard(board?.prefix as string, board?.board as (number | null)[][], cpuTurn);
+        let humanSimulatedBoard = new SimulatedBoard(humanBoard?.prefix as string, humanBoard?.board as (number | null)[][], 0);
         console.log(currentPlayableDice)
-        simulatedBoard.placeSimulatedDice(currentPlayableDice, col);
+        simulatedBoard.placeSimulatedDice(currentPlayableDice, col, humanSimulatedBoard);
         simulationBoards.push(simulatedBoard);
 
-        console.log(simulatedBoard.board);
-        console.log(simulatedBoard.totalScore);
+        //console.log(simulatedBoard.board);
+        //console.log(simulatedBoard.totalScore);
     }
     let selectedCol=-1;
     let highestScore=0;
@@ -35,34 +30,23 @@ export function cpuPlay(cpuBoard: GameBoard, playerBoard:GameBoard){
         if(simulationBoards[i].totalScore > highestScore) {
             highestScore = simulationBoards[i].totalScore;
             selectedCol = simulationBoards[i].column;
+        }else if(simulationBoards[i].totalScore === highestScore){
+            selectedCol=chooseOneNumberBetweenTwo(selectedCol, i);
+            highestScore = simulationBoards[selectedCol].totalScore;
         }
-
     }
-    cpuMovement.placeDice(currentPlayableDice, selectedCol);
+    //Simulate "thinking" time
+    setTimeout(() =>{
+        cpuMovement.placeDice(currentPlayableDice, selectedCol);
+    },1000)
+    
     
 }
 
-/*function thinkStrategy(){
-    let cpuMovement= new CpuMovement(cpuTurn, board as GameBoard, humanBoard as GameBoard);
-    let simulationBoards = [];
-
-    
-    /*let simulatedBoard = new SimulatedBoard(board?.prefix as string, board?.board as (number | null)[][]);
-    console.log(simulatedBoard.board);
-    console.log(simulatedBoard.totalScore);
-
-    let randColumn = getRandomColumn()*/
-    //Simulate "thinking" time
-    /*setTimeout(() =>{
-        cpuMovement.placeDice(currentPlayableDice, randColumn)
-        simulatedBoard.board=board?.board as (number | null)[][]
-        simulatedBoard.addSymbol(randColumn, 10)
-    console.log(simulatedBoard.board);
-    console.log(simulatedBoard.totalScore);
-    },1000)
-    
-}*/
-
+function chooseOneNumberBetweenTwo(firstNum: number, secondNum: number): number {
+    return Math.random() === 0 ? firstNum : secondNum;
+}
+/*
 function getRandomColumn(): number {
     let availableColumns = [];
 
@@ -81,4 +65,4 @@ function getRandomColumn(): number {
     
     
     return availableColumns[Math.floor(Math.random() * (maxFloored - minCeiled) + minCeiled)];
-}
+}*/

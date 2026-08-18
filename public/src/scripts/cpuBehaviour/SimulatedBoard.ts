@@ -15,7 +15,7 @@ export class SimulatedBoard {
         this.prefix = prefix;
         //this.playerName = playerName;
         //This is meant to control the columns and the cells of the board
-        this.board = board;
+        this.board = JSON.parse(JSON.stringify(board));
         //This will be used to control the score. 
         this.scoreSystem = new ScoreSystem();
         this.totalScore= this.scoreSystem.calculateTotalScore(this.board);
@@ -80,7 +80,7 @@ export class SimulatedBoard {
                 
             }
     }
-    placeSimulatedDice(dice: Dice, col:number){
+    placeSimulatedDice(dice: Dice, col:number, opponentSimBoard: SimulatedBoard){
         if(col === -1) {
             return;
         }
@@ -97,7 +97,7 @@ export class SimulatedBoard {
         //this.gameBoard.cells[col][emptyCell]?.appendChild(diceImg);
         //cpuContainer!.innerHTML= "";
         this.addSymbol(col,dice.value);
-        this.deleteColumnSymbols(col, dice.value);
+        opponentSimBoard.deleteColumnSymbols(col, dice.value);
         this.column = col;
         
     }
