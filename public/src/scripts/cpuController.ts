@@ -19,8 +19,10 @@ export function cpuPlay(cpuBoard: GameBoard, playerBoard:GameBoard){
         let humanSimulatedBoard = new SimulatedBoard(humanBoard?.prefix as string, humanBoard?.board as (number | null)[][], 0);
         //console.log(currentPlayableDice)
         simulatedBoard.placeSimulatedDice(currentPlayableDice, col, humanSimulatedBoard);
-        //simulatedBoard.totalScore -= humanSimulatedBoard.totalScore;
+        
         simulationBoards.push(simulatedBoard);
+
+        //simulatedBoard.totalScore -= humanSimulatedBoard.totalScore;
 
         //console.log(simulatedBoard.board);
         //console.log(simulatedBoard.totalScore);
@@ -45,7 +47,14 @@ export function cpuPlay(cpuBoard: GameBoard, playerBoard:GameBoard){
 }
 
 function chooseOneNumberBetweenTwo(firstNum: number, secondNum: number): number {
-    return Math.floor(Math.random()) === 0 ? firstNum : secondNum;
+    let randomNum = Math.round(Math.random())
+    //return Math.floor(Math.random()) === 0 ? firstNum : secondNum;
+    /*console.log(randomNum)
+    console.log("random",Math.round(Math.random()))
+    console.log("random",Math.round(Math.random()))
+    console.log("random",Math.round(Math.random()))
+    console.log("random",Math.round(Math.random()))*/
+    return randomNum === 0 ? firstNum : secondNum;
 }
 /*
 function getRandomColumn(): number {
