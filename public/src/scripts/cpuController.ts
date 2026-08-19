@@ -19,27 +19,38 @@ export function cpuPlay(cpuBoard: GameBoard, playerBoard:GameBoard){
         let humanSimulatedBoard = new SimulatedBoard(humanBoard?.prefix as string, humanBoard?.board as (number | null)[][], 0);
         //console.log(currentPlayableDice)
         simulatedBoard.placeSimulatedDice(currentPlayableDice, col, humanSimulatedBoard);
+        if(simulatedBoard.column != -1){
+            simulationBoards.push(simulatedBoard);
+            //console.log(humanSimulatedBoard)
+            simulatedBoard.totalScore -= humanSimulatedBoard.totalScore;
+        }
         
-        simulationBoards.push(simulatedBoard);
-
-        //simulatedBoard.totalScore -= humanSimulatedBoard.totalScore;
 
         //console.log(simulatedBoard.board);
         //console.log(simulatedBoard.totalScore);
     }
     let selectedCol=-1;
-    let highestScore=0;
+    let highestScore=-Infinity;
+    let indexInSimulation = -1;
+
+    console.log("tablas simuladas", simulationBoards)
     for(let i=0; i < simulationBoards.length; i++){
+        console.log("tabla a examinar", simulationBoards[i].board)
         if(simulationBoards[i].totalScore > highestScore) {
             highestScore = simulationBoards[i].totalScore;
             selectedCol = simulationBoards[i].column;
+            indexInSimulation = i;
         }else if(simulationBoards[i].totalScore === highestScore){
-            selectedCol=chooseOneNumberBetweenTwo(selectedCol, i);
-            highestScore = simulationBoards[selectedCol].totalScore;
+            selectedCol=chooseOneNumberBetweenTwo(selectedCol, simulationBoards[i].column);
+            if(selectedCol === simulationBoards[i].column) indexInSimulation = i;
+            //console.log(selectedCol)
+            //console.log (simulationBoards[selectedCol])
+            highestScore = simulationBoards[indexInSimulation].totalScore;
         }
     }
     //Simulate "thinking" time
     setTimeout(() =>{
+        console.log("best column", selectedCol)
         cpuMovement.placeDice(currentPlayableDice, selectedCol);
     },1000)
     

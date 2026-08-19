@@ -25,20 +25,22 @@ export class SimulatedBoard {
 
 
     // Control Symbols on the board and how this affects Scores
-    addSymbol(columnIndex: number, value: number): void {
-        if (!this.board[columnIndex]) return;
+    addSymbol(columnIndex: number, value: number): number {
+        if (!this.board[columnIndex]) return -1;
         
         
         const emptyCell = this.board[columnIndex].findIndex(cell => cell === null);
-        if (emptyCell === -1) return;
-        console.log(this.board[columnIndex][emptyCell])
+        
+        if (emptyCell === -1) return -1;
+        //console.log(this.board[columnIndex][emptyCell])
         this.board[columnIndex][emptyCell] = value;
         
         //console.log("emptyCell", emptyCell)
         //console.log("value",value)
-        console.log("new",this.board)
-        console.log(this.board[columnIndex])
+        //console.log("new",this.board)
+        //console.log(this.board[columnIndex])
         this.totalScore= this.scoreSystem.calculateTotalScore(this.board);
+        return 0;
     }
    /* updateTotalScore(): number {
         
@@ -96,7 +98,7 @@ export class SimulatedBoard {
         
         //this.gameBoard.cells[col][emptyCell]?.appendChild(diceImg);
         //cpuContainer!.innerHTML= "";
-        this.addSymbol(col,dice.value);
+        if(this.addSymbol(col,dice.value) != 0) return;
         opponentSimBoard.deleteColumnSymbols(col, dice.value);
         this.column = col;
         
