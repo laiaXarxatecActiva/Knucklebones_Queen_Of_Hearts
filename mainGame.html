@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="./public/styles/style.css">
+    <script src="dist/mainGame.js" type="module" async></script>
+    <title>The Queen's Poker Dice</title>
+</head>
+<body>
+    <input type="checkbox" id="sidebar-toggle" class="sidebar-toggle-checkbox">
+    <label for="sidebar-toggle" class="sidebar-toggle-label" aria-label="Toggle sidebar">
+        <span></span>
+        <span></span>
+        <span></span>
+    </label>
+
+    <div class="layout">
+
+        <nav class="sidebar">
+            <a href="./index.html"> 
+                <p class="sidebar-title">El Juego de la Reina</p>
+            </a>
+            <button type="button" class="sidebar-btn" id="how-to-play-btn">
+                <i class="fa fa-question"></i>
+                Como jugar
+            </button>
+            <button type="button" class="sidebar-btn" id="round-info-btn">
+                <i class="fa fa-heart"></i>
+                Información de la partida
+            </button>
+            <button type="button" class="sidebar-btn" id="restart-side-btn">
+                <i class="fa fa-diamond"></i>
+                Nueva partida
+            </button>
+        </nav>
+        <label for="sidebar-toggle" class="sidebar-overlay"></label>
+    
+        <main class="main-content" id="main-content">
+            <div class="main-content-game" id="main-content-game">
+
+                <div class="game-environment" id="opponent">
+
+                </div>
+
+                <div class="middle" id="middle">
+                    <p>VS</p>
+                </div>
+
+                <div class="game-environment" id="player">
+
+                </div>
+
+            </div>
+        </main>
+        
+    </div>
+    
+</body>
+</html>

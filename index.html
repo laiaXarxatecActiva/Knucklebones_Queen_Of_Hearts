@@ -8,8 +8,11 @@
     <script src="dist/mainGame.js" type="module" async></script>
     <title>The Queen's Poker Dice</title>
 </head>
+
 <body>
+
     <input type="checkbox" id="sidebar-toggle" class="sidebar-toggle-checkbox">
+
     <label for="sidebar-toggle" class="sidebar-toggle-label" aria-label="Toggle sidebar">
         <span></span>
         <span></span>
@@ -19,43 +22,233 @@
     <div class="layout">
 
         <nav class="sidebar">
-            <a href="./start.html"> 
-                <p class="sidebar-title">El Juego de la Reina</p>
-            </a>
+            <p class="sidebar-title">
+                El Juego de la Reina
+            </p>
+
             <button type="button" class="sidebar-btn" id="how-to-play-btn">
                 <i class="fa fa-question"></i>
                 Como jugar
             </button>
-            <button type="button" class="sidebar-btn" id="round-info-btn">
-                <i class="fa fa-heart"></i>
-                Información de la partida
-            </button>
-            <button type="button" class="sidebar-btn" id="restart-side-btn">
-                <i class="fa fa-diamond"></i>
-                Nueva partida
-            </button>
+
+            <a href="./mainGame.html">
+                <button type="button" class="sidebar-btn" id="how-to-play-btn">
+                    <i class="fa fa-diamond"></i>
+                    Nueva artida
+                </button>
+            </a>
         </nav>
         <label for="sidebar-toggle" class="sidebar-overlay"></label>
-    
-        <main class="main-content" id="main-content">
-            <div class="main-content-game" id="main-content-game">
 
-                <div class="game-environment" id="opponent">
+        <main class="start-main-content" id="start-main-content">
 
-                </div>
-
-                <div class="middle" id="middle">
-                    <p>VS</p>
-                </div>
-
-                <div class="game-environment" id="player">
-
-                </div>
-
+            <div class="start-title">
+                <h1>El juego de la Reina</h1>
             </div>
-        </main>
-        
-    </div>
+
+            <div class="start-content">
+
+                <div class="start-content-ps">
+                    <p>
+                        Tras una bizarra secuencia de acontecimientos, el jugador acaba
+                        atrapado en el reino de la Reina de Naipes. Y en este reino, la
+                        ley dicta que todo aquel que entra en los dominios de la Reina
+                        debe enfrentarse a ella en su pasatiempo favorito:
+                        <strong>el Juego de la Reina</strong>. Un juego que,
+                        irónicamente, no tiene tanto que ver con las cartas.
+                    </p>
     
+                    <p>
+                        Las reglas son simples. Si el jugador consigue derrotarla,
+                        recuperará su libertad y podrá abandonar el reino. Sin embargo,
+                        la derrota tiene un alto precio, pues quienes pierden son
+                        enviados a las mazmorras del castillo, donde esperan un destino
+                        incierto bajo el capricho de la reina.
+                    </p>
+    
+                    <p>
+                        Solo hay una forma de escapar: vencer en su propio juego.
+                    </p>
+                </div>
+
+                <div class="start-btn-div">
+                    <a href="./mainGame.html">
+                        <button type="button" class="start-button" id="start-btn">
+                            Empezar Partida
+                        </button>
+                    </a>
+                </div>
+
+                <div class="how-to-play-exp rules-section">
+
+                    <h2 class="rules-title">
+                        Cómo jugar
+                    </h2>
+
+                    <div class="start-content-ps">
+                        <p class="rules-text">
+                            En cada turno recibes un
+                            <strong>símbolo aleatorio</strong>
+                            que debes colocar en una de las tres columnas de tu tablero.
+                            Una columna llena ya no puede recibir más símbolos.
+                        </p>
+    
+                        <p class="rules-text">
+                            El objetivo es conseguir
+                            <strong>más puntos que tu rival</strong>
+                            cuando termine la partida, lo cual ocurre en cuanto uno de
+                            los dos tableros se completa.
+                        </p>
+                    </div>
+
+
+                    <hr class="rules-divider">
+
+                    <h3 class="rules-subtitle">
+                        Suma más puntos apilando símbolos iguales
+                    </h3>
+
+                    <div class="start-content-ps">
+                        <p class="rules-text">
+                            Si colocas varios símbolos del mismo valor en una misma
+                            columna, cada uno de ellos multiplica su valor por la
+                            cantidad de símbolos iguales que haya en esa columna.
+                            Por ejemplo:
+                        </p>
+                    </div>
+
+                    <div class="rules-example">
+
+                        <pre class="rules-example-board">♦ ♦
+1 1</pre>
+
+                        <p class="rules-calculation">
+                            (1 + 1) × 2 = <strong>4 puntos</strong>
+                        </p>
+
+                    </div>
+
+                    <div class="rules-example">
+
+                        <pre class="rules-example-board">♣ ♣ ♣
+3 3 3</pre>
+
+                        <p class="rules-calculation">
+                            (3 + 3 + 3) × 3 = <strong>27 puntos</strong>
+                        </p>
+
+                    </div>
+
+                    <div class="rules-table-wrapper">
+
+                        <table class="rules-table">
+
+                            <thead>
+                                <tr>
+                                    <th>Símbolo</th>
+                                    <th>1 símbolo</th>
+                                    <th>2 símbolos</th>
+                                    <th>3 símbolos</th>
+                                </tr>
+                            </thead>
+
+                            <tbody>
+
+                                <tr>
+                                    <td>
+                                        <img src="./public/src/imgs/diamond.png" alt="Diamante">
+                                        <span>Diamante (1)</span>
+                                    </td>
+
+                                    <td>1</td>
+                                    <td>4</td>
+                                    <td>9</td>
+                                </tr>
+
+                                <tr>
+                                    <td>
+                                        <img src="./public/src/imgs/heart.png" alt="Corazón">
+                                        <span>Corazón (2)</span>
+                                    </td>
+
+                                    <td>2</td>
+                                    <td>8</td>
+                                    <td>18</td>
+                                </tr>
+
+                                <tr>
+                                    <td>
+                                        <img src="./public/src/imgs/club.png" alt="Trébol">
+                                        <span>Trébol (3)</span>
+                                    </td>
+
+                                    <td>3</td>
+                                    <td>12</td>
+                                    <td>27</td>
+                                </tr>
+
+                                <tr>
+                                    <td>
+                                        <img src="./public/src/imgs/pike.png" alt="Pica">
+                                        <span>Pica (4)</span>
+                                    </td>
+
+                                    <td>4</td>
+                                    <td>16</td>
+                                    <td>36</td>
+                                </tr>
+
+                                <tr>
+                                    <td>
+                                        <img src="./public/src/imgs/joker.png" alt="Bufón">
+                                        <span>Bufón (5)</span>
+                                    </td>
+
+                                    <td>5</td>
+                                    <td>20</td>
+                                    <td>45</td>
+                                </tr>
+
+                                <tr>
+                                    <td>
+                                        <img src="./public/src/imgs/queen_crown.png" alt="Reina">
+                                        <span>Reina (6)</span>
+                                    </td>
+
+                                    <td>6</td>
+                                    <td>24</td>
+                                    <td>54</td>
+                                </tr>
+
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+                    <hr class="rules-divider">
+
+                    <h3 class="rules-subtitle">
+                        Elimina las combinaciones de tu rival
+                    </h3>
+
+                    <div class="start-content-ps">
+                        <p class="rules-text">
+                            Al colocar un símbolo, eliminas todos los símbolos del mismo
+                            valor que haya en la
+                            <strong>columna correspondiente del tablero rival</strong>.
+                            Úsalo para destruir sus combinaciones de alta puntuación
+                            antes de que la partida acabe.
+                        </p>
+                    </div>
+
+
+                </div>
+            </div>
+
+        </main>
+
+    </div>
+
 </body>
 </html>
