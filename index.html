@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">    
     <link rel="stylesheet" href="./public/styles/style.css">
     <script src="dist/mainGame.js" type="module" async></script>
     <title>The Queen's Poker Dice</title>
@@ -22,19 +22,30 @@
     <div class="layout">
 
         <nav class="sidebar">
-            <p class="sidebar-title">
-                El Juego de la Reina
-            </p>
+            <a href="#">
+                <p class="sidebar-title">
+                    El Juego de la Reina
+                </p>
+            </a>
 
-            <button type="button" class="sidebar-btn" id="how-to-play-btn">
-                <i class="fa fa-question"></i>
-                Como jugar
-            </button>
+            <a href="#sinopsis">
+                <button type="button" class="sidebar-btn">
+                    <i class="fa-solid fa-star"></i>
+                    Sinopsis
+                </button>
+            </a>
 
-            <a href="./mainGame.html">
-                <button type="button" class="sidebar-btn" id="how-to-play-btn">
-                    <i class="fa fa-diamond"></i>
-                    Nueva artida
+            <a href="#start-btn">
+                <button type="button" class="sidebar-btn">
+                    <i class="fa-solid fa-star"></i>
+                    Empezar Partida
+                </button>
+            </a>
+
+            <a href="#como-jugar">
+                <button type="button" class="sidebar-btn">
+                    <i class="fa-solid fa-star"></i>
+                    Cómo jugar
                 </button>
             </a>
         </nav>
@@ -43,10 +54,16 @@
         <main class="start-main-content" id="start-main-content">
 
             <div class="start-title">
-                <h1>El juego de la Reina</h1>
+                <h1 class="index-main-title" id="el-juego-de-la-reina">
+                    El juego de la Reina
+                </h1>
             </div>
 
             <div class="start-content">
+
+                <h2 class="index-title" id="sinopsis">
+                    Sinopsis
+                </h2>
 
                 <div class="start-content-ps">
                     <p>
@@ -81,7 +98,7 @@
 
                 <div class="how-to-play-exp rules-section">
 
-                    <h2 class="rules-title">
+                    <h2 class="index-title" id="como-jugar">
                         Cómo jugar
                     </h2>
 
@@ -104,8 +121,8 @@
 
                     <hr class="rules-divider">
 
-                    <h3 class="rules-subtitle">
-                        Suma más puntos apilando símbolos iguales
+                    <h3 class="index-subtitle">
+                        * Suma más puntos apilando símbolos iguales
                     </h3>
 
                     <div class="start-content-ps">
@@ -228,8 +245,8 @@
 
                     <hr class="rules-divider">
 
-                    <h3 class="rules-subtitle">
-                        Elimina las combinaciones de tu rival
+                    <h3 class="index-subtitle">
+                        * Elimina las combinaciones de tu rival
                     </h3>
 
                     <div class="start-content-ps">
@@ -245,6 +262,12 @@
 
                 </div>
             </div>
+
+            <a href="#">
+                <button type="button" id="back-to-top" class="back-to-top" aria-label="Volver arriba">
+                    <i class="fa-solid fa-arrow-up"></i>
+                </button>
+            </a>
 
         </main>
 
