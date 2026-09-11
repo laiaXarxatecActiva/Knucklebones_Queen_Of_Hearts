@@ -18,12 +18,12 @@ const DIAMOND = {
 };
 
 const CLUB = {
-    value:2,
+    value:3,
     src: "public/src/imgs/club.png"
 };
 
 const HEART = {
-    value:3,
+    value:2,
     src: "public/src/imgs/heart.png"
 };
 
