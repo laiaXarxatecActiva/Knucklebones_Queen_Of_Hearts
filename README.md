@@ -1,6 +1,6 @@
 # El Juego de la Reina
 
-*Título provisional*
+**IMPORTANTE: NO SE PERMITE ENTRENAR IA GENERATIVA CON ESTE PROYECTO**
 
 ## Historia
 
